@@ -1,0 +1,672 @@
+  
+  <!DOCTYPE html>
+  <html lang="en">
+
+  <head>
+
+    <!-- Required meta tags -->
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title></title>
+
+    <!-- vendor css -->
+    <link href="../lib/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link href="../lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+    <link href="../lib/typicons.font/typicons.css" rel="stylesheet">
+    <link href="../lib/flag-icon-css/css/flag-icon.min.css" rel="stylesheet">
+    <!-- azia CSS -->
+    <link rel="stylesheet" href="../css/azia.css">
+
+
+
+  </head>
+
+  <body>
+    <div class="az-header">
+      <div class="container-fluid">
+        <div class="az-header-left">
+          <img src="../img/image.ico" width="32px" height="30px">
+          <a href="index.html" class="az-logo"><span></span>&nbsp;Image Print Org.</a>
+          <a href="" id="azMenuShow" class="az-header-menu-icon d-lg-none"><span></span></a>
+        </div><!-- az-header-left -->
+        <div class="az-header-menu">
+          <div class="az-header-menu-header">
+            <a href="index.php" class="az-logo"><span></span> </a>
+            <a href="" class="close">&times;</a>
+          </div><!-- az-header-menu-header -->
+          <ul class="nav">
+            <li class="nav-item">
+              <a href="index.php" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item">
+              <a href="" class="nav-link" href="#" data-toggle="modal" data-target="#myModal">Schedule</a>
+            </li>
+            <li class="nav-item">
+              <a href="Report.php" class="nav-link">Analytics</a>
+            </li>
+            <li class="nav-item">
+              <a href="raw.php" class="nav-link">Record</a>
+            </li>
+            <li class="nav-item">
+              <a href="update.php" class="nav-link ">Users</a>
+            </li>
+            <li class="nav-item">
+              <a href="" class="nav-link " id="myInput">Settings</a>
+            </li>
+            <script>
+              const myInput = document.getElementById("myInput");
+              myInput.style.setProperty("cursor", "no-drop", "important");
+            </script>
+          </ul>
+        </div><!-- az-header-menu -->
+        <div class="az-header-right">
+          <button type="submit" onclick="window.location.href = '../index.php'" value="Continue" class="btn  btn-outline-primary">Logout</button>
+        </div><!-- az-header-right -->
+      </div><!-- container -->
+    </div><!-- az-header -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- Modal header -->
+          <div class="modal-header">
+            <h6 class="modal-title fw-normal">Schedule</h6>
+            <button type="button" class="close btn " data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                  <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
+                </svg>
+              </span>
+            </button>
+          </div>
+          <!-- Modal body -->
+          <div class="modal-body">
+            <div class="d-flex justify-content-start">
+              <div class="btn-group">
+                <button class="btn-sm btn-outline-primary active mr-2" onclick="showTab('office')" id="office-tab">Office</button> &nbsp;
+                <button class="btn-sm btn-outline-primary" onclick="showTab('workshop')" id="workshop-tab">Workshop</button>
+              </div>
+            </div>
+            <div class="tab-content" id="myTabContent">
+              <div class="tab-pane fade show active" id="office" role="tabpanel" aria-labelledby="office-tab">
+                <form action="index.php" class="form-inline" method="POST">
+                  <div class="row">
+                    <div class="col-12 mt-2 schedule_element1">
+                      <lable>Schedule for Office Workers</lable> <br>
+                      <small class="margin-time" for="datetime">Time (HH:MM:SS)</small>
+                    </div>
+                    <div class="mt-2">
+                      <div class="input-group adjuster">
+                        <div class="input-group-prepend col-4">
+                          <div class="input-group-text">
+                            Morning Check-in :
+                          </div>
+                        </div><!-- input-group-prepend -->
+                        &nbsp; <input class="form-control adjuster" pattern="(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]" type="text" name="min_from" placeholder="From:- 00:00:00" step="1" value="01:00:01">
+                        &nbsp; <input class="form-control adjuster" pattern="(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]" type="text" name="min_to" placeholder="To:- 00:00:00" step="1" value="02:30:00">
+                      </div><!-- input-group -->
+                    </div>
+                    <div class="input-group adjuster">
+                      <div class="input-group-prepend col-4">
+                        <div class="input-group-text">
+                          Morning warning :
+                        </div>
+                      </div><!-- input-group-prepend -->
+                      &nbsp;<input class="form-control adjuster" pattern="(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]" type="text" name="mwar_from" placeholder="From:- 00:00:00" step="1" value="02:30:01">
+                      &nbsp;<input class="form-control adjuster" pattern="(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]" type="text" name="mwar_to" placeholder="To:- 00:00:00" step="1" value="02:40:00">
+                    </div><!-- input-group -->
+                    <div class="input-group adjuster">
+                      <div class="input-group-prepend col-4">
+                        <div class="input-group-text">
+                          Morning Rejected :
+                        </div>
+                      </div><!-- input-group-prepend -->
+                      &nbsp; <input class="form-control adjuster" pattern="(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]" type="text" name="mrej_from" placeholder="From:- 00:00:00" step="1" value="02:40:01">
+                      &nbsp; <input class="form-control adjuster" pattern="(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]" type="text" name="mrej_to" placeholder="To:- 00:00:00" step="1" value="06:30:00">
+                    </div><!-- input-group -->
+                    <div class="input-group adjuster">
+                      <div class="input-group-prepend col-4">
+                        <div class="input-group-text">
+                          Lunch Check-out :
+                        </div>
+                      </div><!-- input-group-prepend -->
+                      &nbsp;<input class="form-control adjuster " pattern="(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]" type="text" name="lout_from" placeholder="From:- 00:00:00" step="1" value="06:30:01">
+                      &nbsp;<input class="form-control adjuster" pattern="(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]" type="text" name="lout_to" placeholder="To:- 00:00:00" step="1" value="07:30:00">
+                    </div><!-- input-group -->
+                    <div class="input-group adjuster">
+                      <div class="input-group-prepend col-4">
+                        <div class="input-group-text">
+                          Afternoon Check-in:
+                        </div>
+                      </div><!-- input-group-prepend -->
+                      &nbsp;<input class="form-control adjuster" pattern="(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]" type="text" name="acin_from" placeholder="From:- 00:00:00" step="1" value="07:30:01">
+                      &nbsp;<input class="form-control adjuster" pattern="(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]" type="text" name="acin_to" placeholder="To:- 00:00:00" step="1" value="08:00:00">
+                    </div><!-- input-group -->
+                    <div class="input-group adjuster">
+                      <div class="input-group-prepend col-4">
+                        <div class="input-group-text">
+                          Afternoon warning:
+                        </div>
+                      </div><!-- input-group-prepend -->
+                      &nbsp;<input class="form-control adjuster" pattern="(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]" type="text" name="awar_from" placeholder="From:- 00:00:00" step="1" value="08:00:01">
+                      &nbsp;<input class="form-control adjuster" pattern="(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]" type="text" name="awar_to" placeholder="To:- 00:00:00" step="1" value="08:10:00">
+                    </div><!-- input-group -->
+                    <div class="input-group adjuster">
+                      <div class="input-group-prepend col-4">
+                        <div class="input-group-text">
+                          Afternoon Rejected:
+                        </div>
+                      </div><!-- input-group-prepend -->
+                      &nbsp;<input class="form-control adjuster" pattern="(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]" type="text" name="arej_from" placeholder="From:- 00:00:00" step="1" value="08:10:01">
+                      &nbsp;<input class="form-control adjuster" pattern="(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]" type="text" name="arej_to" placeholder="To:- 00:00:00" step="1" value="11:59:58">
+                    </div><!-- input-group -->
+                    <div class="input-group adjuster">
+                      <div class="input-group-prepend col-4">
+                        <div class="input-group-text">
+                          Early Leave:
+                        </div>
+                      </div><!-- input-group-prepend -->
+                      &nbsp;<input class="form-control adjuster" pattern="(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]" type="text" name="el_from" placeholder="From:- 00:00:00" step="1" value="11:59:59">
+                      &nbsp;<input class="form-control adjuster" pattern="(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]" type="text" name="el_to" placeholder="To:- 00:00:00" step="1" value="12:00:00">
+                    </div><!-- input-group -->
+                    <div class="input-group adjuster">
+                      <div class="input-group-prepend col-4">
+                        <div class="input-group-text  ">
+                          Home Leave:
+                        </div>
+                      </div><!-- input-group-prepend -->
+                      &nbsp;<input class="form-control adjuster" pattern="(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]" type="text" name="hl_from" placeholder="From:- 00:00:00" step="1" value="12:00:01">
+                      &nbsp;<input class="form-control adjuster" pattern="(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]" type="text" name="hl_to" placeholder="To:- 00:00:00" step="1" value="23:00:00">
+                    </div><!-- input-group -->
+                    <div class="col-12">
+                      <div class="d-flex justify-content-end mt-3">
+                        <input type="submit" name="offie_submit" class="btn-primary btn-sm" value="Update">
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="tab-pane fade" id="workshop" role="tabpanel" aria-labelledby="workshop-tab">
+                <form action="index.php" class="form-inline" method="POST">
+                  <div class="row">
+                    <div class="col-12 mt-2 schedule_element1">
+                      <lable>Schedule for Workshop Workers</lable> <br>
+                      <small class="margin-time" for="datetime">Time (HH:MM:SS)</small>
+                    </div>
+                    <div class="mt-2">
+                      <div class="input-group adjuster">
+                        <div class="input-group-prepend col-4">
+                          <div class="input-group-text  ">
+                            Morning Check-in:
+                          </div>
+                        </div><!-- input-group-prepend -->
+                        &nbsp;
+                        <input class="form-control adjuster" pattern="(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]" type="text" name="min_from" placeholder="From:- 00:00:00" step="1" value="01:00:00">
+                        &nbsp;
+                        <input class="form-control adjuster" pattern="(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]" type="text" name="min_to" placeholder="To:- 00:00:00" step="1" value="02:30:00">
+                      </div><!-- input-group -->
+                    </div>
+                    <style>
+                      .adjuster {
+                        height: 30px;
+                        margin-right: 8px;
+                      }
+                    </style>
+
+                    <div class="input-group adjuster">
+                      <div class="input-group-prepend col-4">
+                        <div class="input-group-text  ">
+                          Morning warning:
+                        </div>
+                      </div><!-- input-group-prepend -->
+                      &nbsp;
+                      <input class="form-control adjuster" pattern="(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]" type="text" name="mwar_from" placeholder="From:- 00:00:00" step="1" value="02:30:01">
+                      &nbsp;
+                      <input class="form-control adjuster" pattern="(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]" type="text" name="mwar_to" placeholder="To:- 00:00:00" step="1" value="02:40:00">
+                    </div><!-- input-group -->
+                    <div class="input-group adjuster">
+                      <div class="input-group-prepend col-4">
+                        <div class="input-group-text  ">
+                          Morning Reject:
+                        </div>
+                      </div><!-- input-group-prepend -->
+                      &nbsp;
+                      <input class="form-control adjuster" pattern="(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]" type="text" name="mrej_from" placeholder="From:- 00:00:00" step="1" value="02:40:01">
+                      &nbsp;
+                      <input class="form-control adjuster" pattern="(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]" type="text" name="mrej_to" placeholder="To:- 00:00:00" step="1" value="06:29:59">
+                    </div><!-- input-group -->
+                    <div class="input-group adjuster">
+                      <div class="input-group-prepend col-4">
+                        <div class="input-group-text  ">
+                          Lunch Check-out:
+                        </div>
+                      </div><!-- input-group-prepend -->
+                      &nbsp;
+                      <input class="form-control adjuster" pattern="(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]" type="text" name="lout_from" placeholder="From:- 00:00:00" step="1" value="06:30:00">
+                      &nbsp;
+                      <input class="form-control adjuster" pattern="(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]" type="text" name="lout_to" placeholder="To:- 00:00:00" step="1" value="07:19:59">
+                    </div><!-- input-group -->
+                    <div class="input-group adjuster">
+                      <div class="input-group-prepend col-4">
+                        <div class="input-group-text  ">
+                          Afternoon Check-in:
+                        </div>
+                      </div><!-- input-group-prepend -->
+                      &nbsp;
+                      <input class="form-control adjuster" pattern="(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]" type="text" name="acin_from" placeholder="From:- 00:00:00" step="1" value="07:20:00">
+                      &nbsp;
+                      <input class="form-control adjuster" pattern="(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]" type="text" name="acin_to" placeholder="To:- 00:00:00" step="1" value="07:30:00">
+                    </div><!-- input-group -->
+                    <div class="input-group adjuster">
+                      <div class="input-group-prepend col-4">
+                        <div class="input-group-text  ">
+                          Afternoon warning:
+                        </div>
+                      </div><!-- input-group-prepend -->
+                      &nbsp;
+                      <input class="form-control adjuster" pattern="(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]" type="text" name="awar_from" placeholder="From:- 00:00:00" step="1" value="07:30:01">
+                      &nbsp;
+                      <input class="form-control adjuster" pattern="(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]" type="text" name="awar_to" placeholder="To:- 00:00:00" step="1" value="07:40:00">
+                    </div><!-- input-group -->
+                    <div class="input-group adjuster">
+                      <div class="input-group-prepend col-4">
+                        <div class="input-group-text  ">
+                          Afternoon Rejected:
+                        </div>
+                      </div><!-- input-group-prepend -->
+                      &nbsp;
+                      <input class="form-control adjuster" pattern="(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]" type="text" name="arej_from" placeholder="From:- 00:00:00" step="1" value="07:40:01">
+                      &nbsp;
+                      <input class="form-control adjuster" pattern="(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]" type="text" name="arej_to" placeholder="To:- 00:00:00" step="1" value="11:20:00">
+                    </div><!-- input-group -->
+                    <div class="input-group adjuster">
+                      <div class="input-group-prepend col-4">
+                        <div class="input-group-text  ">
+                          Early Leave:
+                        </div>
+                      </div><!-- input-group-prepend -->
+                      &nbsp;
+                      <input class="form-control adjuster" pattern="(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]" type="text" name="el_from" placeholder="From:- 00:00:00" step="1" value="11:29:59">
+                      &nbsp;
+                      <input class="form-control adjuster" pattern="(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]" type="text" name="el_to" placeholder="To:- 00:00:00" step="1" value="11:30:00">
+                    </div><!-- input-group -->
+
+                    <div class="input-group adjuster ">
+                      <div class="input-group-prepend col-4">
+                        <div class="input-group-text  ">
+                          Home Leave:
+                        </div>
+                      </div><!-- input-group-prepend -->
+                      &nbsp;
+                      <input class="form-control adjuster" pattern="(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]" type="text" name="hl_from" placeholder="From:- 00:00:00" step="1" value="11:30:01">
+                      &nbsp;
+                      <input class="form-control adjuster" pattern="(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]" type="text" name="hl_to" placeholder="To:- 00:00:00" step="1" value="19:00:00">
+                    </div><!-- input-group -->
+
+                    <div class="col-12">
+                      <div class="d-flex justify-content-end mt-3">
+                        <input type="submit" name="workshop_submit" class="btn-primary btn-sm" value="Update">
+                      </div>
+                    </div>
+                  </div>
+              </div>
+              </form>
+            </div>
+          </div>
+          <script>
+            function showTab(tabName) {
+              var i, tabContent, tabLinks;
+              tabContent = document.getElementsByClassName("tab-pane");
+              for (i = 0; i < tabContent.length; i++) {
+                tabContent[i].classList.remove("show", "active");
+              }
+              tabLinks = document.getElementsByClassName("btn");
+              for (i = 0; i < tabLinks.length; i++) {
+                tabLinks[i].classList.remove("active");
+              }
+              document.getElementById(tabName).classList.add("show", "active");
+              event.currentTarget.classList.add("active");
+            }
+          </script>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <div class="az-content az-content-dashboard">
+      <div class="container-fluid">
+        <div class="az-content-body">
+
+          <div class="az-dashboard-one-title az-minus">
+            <div>
+              <h2 class="az-dashboard-title">Attendance Registry</h2>
+              <!--  <p class="az-dashboard-text">Your web analytics dashboard template.</p> -->
+              <div class="az-content-breadcrumb">
+                <span>Attendance System</span>
+                <span>Record</span>
+
+              </div>
+            </div>
+
+            <script>
+              window.onload = function() {
+                function dateTime() {
+                  var date = new Date();
+                  document.getElementById("clock").innerText = date.toLocaleTimeString(
+                    'en-US', {
+                      hour12: false
+                    })
+                };
+                setInterval(dateTime, 1000);
+              };
+            </script>
+
+            <div class="az-content-header-right">
+              <div class="media">
+                <div class="media-body">
+                  <label>Day</label>
+                  <h6> Wednesday                  </h6>
+                </div><!-- media-body -->
+              </div><!-- media -->
+              <div class="media">
+                <div class="media-body">
+                  <label>Time</label>
+                  <h6><span id="clock"></span></h6>
+                </div><!-- media-body -->
+              </div><!-- media -->
+              <div class="media">
+                <div class="media-body">
+                  <label>Event [YY:MM:DD]</label>
+                  <h6>October 18, 2023                  </h6>
+                </div><!-- media-body -->
+              </div><!-- media -->
+
+              <div class="media">
+                <div class="media-body">
+                  <button class="btn-sm btn-primary" onclick="printDiv()"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-printer" viewBox="0 0 16 16">
+                      <path d="M2.5 8a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z" />
+                      <path d="M5 1a2 2 0 0 0-2 2v2H2a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h1v1a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-1h1a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-1V3a2 2 0 0 0-2-2H5zM4 3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2H4V3zm1 5a2 2 0 0 0-2 2v1H2a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v-1a2 2 0 0 0-2-2H5zm7 2v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1z" />
+                    </svg> Print</button>
+                </div><!-- media-body -->
+              </div><!-- media -->
+
+              <script>
+                function printDiv() {
+                  var printContents = document.getElementById("mainDiv").innerHTML;
+                  var originalContents = document.body.innerHTML;
+
+                  document.body.innerHTML = printContents;
+                  window.print();
+
+                  document.body.innerHTML = originalContents;
+                }
+              </script>
+            </div>
+          </div><!-- az-dashboard-one-title -->
+
+
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          <div class="row row-sm mg-b-20">
+            <div class="col-lg-12 ht-lg-100p">
+              <div class="card card-dashboard-one">
+                <div class="btn-group">
+
+                  <div class="card-header">
+                    <div>
+                      <h6 class="card-title card-title-font">Record list</h6>
+                      <small class="card-text mb-2">Select From - To Date selector below <small>
+
+
+                          
+
+                          <form method="post" action="#" class="d-flex justify-content-start align-items-center mt-2">
+                            <input type="date" name="from_date" value="2023-10-01" class="form-control-sm ">&nbsp;&nbsp;
+                            <input type="date" name="to_date" value="2023-10-18" class="form-control-sm ">&nbsp;
+                            <select class="form-select form-control-sm " name="user" id="agent"><option value="1">Bereket Kassahun</option><option value="2">Fasil Ayele</option><option value="3">Rahel Anbes</option><option value="5">Setu Getachew</option><option value="6">Bertukan Ayu</option><option value="8">Andenet Tesfaye</option><option value="9">Ephrem Tesfaye</option></select>                            &nbsp;
+                            <button name="filter" type="submit" class="btn-sm btn-primary">&nbsp;List&nbsp;</button>&nbsp;&nbsp;
+                            <input type="submit" class="btn-sm btn-primary" name="Analyze_button" value="Analyze">&nbsp;
+                            <input type="submit" class="btn-sm btn-primary" name="worktime" value="Calculate Worktime">&nbsp;
+                          </form>
+                    </div>
+                  </div>
+                  <div>
+                  </div>
+                </div><!-- card-header -->
+
+                <div id="mainDiv" class="table-wrapper m-2">
+                  <table>
+                    <tbody>
+
+                      
+                                                  <div class="col-4 col-margin mt-1">
+                            <button type="button" class="mb-1 btn-sm btn-primary  ">
+                                                            Rahel Anbes <span class="badge badge-light"> Report: 2023-10-01  to  2023-10-18 </span> </button>
+                            <div class="az-list-item">
+                              <div>
+                                <h6>Regular Attendance</h6>
+                                <span>Morning Only Time Attendance </span><br>
+                                <span>Afternoon Only Time Attendance </span><br>
+                                <span>Total Daily Attendace </span><br><br>
+                                <span  ><mark>Total : 43:59:08 hours  </mark></span><br>                               </div>
+                              <div>
+                                <h6 class="tx-primary">&nbsp;</h6>
+                                <span>00:00:00</span><br>
+                                <span>11:58:00</span><br>
+                                <span>32:01:08</span><br>
+                                <span>&nbsp;</span><br>
+                              </div>
+                            </div><!-- list-group-item -->
+
+                          </div>
+
+                          </small>
+                                                <style>
+                          .notification_session {
+
+                            color: #856404;
+                            background-color: #fff3cd;
+                            border-color: #ffeeba;
+                            padding: 10px 10px;
+                          }
+
+                          .col-margin {
+                            margin: -5px 0px 10px -10px;
+                          }
+
+                          .sub {
+                            font-size: 12px;
+                          }
+
+                          table {
+                            width: 100%;
+                            border-collapse: collapse;
+                          }
+
+                          th,
+                          td {
+                            padding: 8px;
+                            text-align: left;
+                            white-space: nowrap;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                          }
+
+                          th:first-child,
+                          td:first-child {
+                            width: 15%;
+                          }
+
+                          th:nth-child(2),
+                          td:nth-child(2),
+                          th:nth-child(3),
+                          td:nth-child(3),
+                          th:nth-child(4),
+                          td:nth-child(4) {
+                            width: 10%;
+                          }
+
+                          th:nth-child(5),
+                          td:nth-child(5),
+                          th:nth-child(6),
+                          td:nth-child(6),
+                          th:nth-child(7),
+                          td:nth-child(7) {
+                            width: 15%;
+                          }
+
+                          th:nth-child(8),
+                          td:nth-child(8),
+                          th:nth-child(9),
+                          td:nth-child(9),
+                          th:nth-child(10),
+                          td:nth-child(10) {
+                            width: 10%;
+                          }
+                        </style>
+
+                        <thead>
+                          <tr>
+                            <th>Date</th>
+                            <th>Morning-in</th>
+                            <th>Lunch-out</th>
+
+                            <th>Afternoon-in</th>
+                            <th>Home leave-out</th>
+
+
+                            <th>Mor.Work Time</th>
+                            <th>Aft.Work Time</th>
+                            <th>Total Work Time</th>
+                          </tr>
+                        </thead>
+
+                      <tr><td>2023-10-16</td><td>null</td><td>null</td><td>07:58:00</td><td>null</td><td>null</td><td>null</td><td>null</td></tr><tr><td>2023-10-17</td><td>null</td><td>null</td><td>08:00:00</td><td>19:58:00</td><td>null</td><td>11:58:00</td><td>null</td></tr><tr><td>2023-10-03</td><td>02:29:55</td><td>06:30:01</td><td>07:59:55</td><td>12:00:06</td><td>04:00:06</td><td>04:00:11</td><td>08:00:17</td></tr><tr><td>2023-10-04</td><td>02:29:55</td><td>06:30:01</td><td>07:59:55</td><td>12:00:06</td><td>04:00:06</td><td>04:00:11</td><td>08:00:17</td></tr><tr><td>2023-10-05</td><td>02:29:55</td><td>06:30:01</td><td>07:59:55</td><td>12:00:06</td><td>04:00:06</td><td>04:00:11</td><td>08:00:17</td></tr><tr><td>2023-10-06</td><td>02:29:55</td><td>06:30:01</td><td>07:59:55</td><td>12:00:06</td><td>04:00:06</td><td>04:00:11</td><td>08:00:17</td></tr></table> <br>                    </tbody>
+                  </table>
+                </div>
+
+
+                <style>
+                  .table-wrapper {
+                    overflow-x: hidden;
+                  }
+
+                  table {
+                    width: 100%;
+                    border-collapse: collapse;
+                    white-space: nowrap;
+                  }
+
+                  th,
+                  td {
+                    padding: 2px 10px;
+                    text-align: left;
+                    border: 1px solid #ddd;
+                    font-size: 14px;
+                    font-weight: 400;
+                  }
+
+                  th {
+                    background-color: #f2f2f2;
+                  }
+
+                  #dock-window {
+                    position: fixed;
+                    bottom: 0;
+                    right: 0;
+                    background-color: #f2f2f2;
+                    border: 1px solid #ccc;
+                    padding: 10px;
+                    width: 300px;
+                    height: 200px;
+                    display: none;
+                  }
+
+                  #dock-window-header {
+                    background-color: #ddd;
+                    padding: 5px;
+                    cursor: move;
+                  }
+
+                  #dock-window-content {
+                    height: 150px;
+                    /*	overflow: auto; */
+                  }
+
+                  #dock-window-close {
+                    position: absolute;
+                    top: 13px;
+                    right: 15px;
+                    cursor: pointer;
+                  }
+
+                  .in-control {
+                    display: block;
+                    width: 90%;
+                    padding: 5px 10px;
+                    font-size: 12px;
+                    font-weight: 400;
+                    line-height: 1.5;
+                    color: #212529;
+                    background-color: #fff;
+                    background-clip: padding-box;
+                    border: 1px solid #ced4da;
+                    -webkit-appearance: none;
+                    -moz-appearance: none;
+                    appearance: none;
+                    border-radius: 0.375rem;
+                    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+                  }
+                </style>
+                <!-- card-body -->
+              </div><!-- card -->
+            </div><!-- col -->
+          </div>
+        </div><!-- az-content-body -->
+      </div>
+    </div><!-- az-content -->
+
+    
+<div class="footer p-1 ht-20">
+    <div class="container-fluid ht-100p pd-t-0-f">
+      <span class="font-weight-light d-block text-center text-sm-left d-sm-inline-block">Copyright © 2023 Image Printing, All Right Reserved.</span>
+      <span class="float-none font-weight-light float-sm-right d-block mt-1 mt-sm-0 text-center">Developed By : 0rit Systems - 0932715312</span>
+    </div>
+  </div>
+ 
+
+
+
+
+
+
+    <script src="../lib/jquery/jquery.min.js"></script>
+    <script src="../lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../lib/ionicons/ionicons.js"></script>
+    <script src="../lib/jquery.flot/jquery.flot.js"></script>
+    <script src="../lib/jquery.flot/jquery.flot.resize.js"></script>
+
+    <script src="../js/azia.js"></script>
+
+  </body>
+
+  </html>

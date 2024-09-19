@@ -1,0 +1,1012 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <title>Home</title>
+  <!-- Favicon-->
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+  <!-- Bootstrap icons-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+  <!-- Core theme CSS (includes Bootstrap)-->
+  <link href="css/styles.css" rel="stylesheet" />
+  <link href="./css/corrector.css" rel="stylesheet">
+  <link href="./css/dataTables.min.css" rel="stylesheet">
+
+
+
+  <script src="./js/jquery.min.js"></script>
+  <script src="./js/popper.min.js"></script>
+  <script src="./js/bootstrap.min.js"></script>
+</head>
+
+<body>
+  <!-- Navigation-->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+    <!--  <a class="navbar-brand m-0" href="#!">
+         <img class="ms-0 mb-1" src="./assets/image/image_logo.png" width="32px" height="30px"> Image Printing</a>
+                -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+          <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
+          <li class="nav-item"> <a class="nav-link" href="#" data-toggle="modal" data-target="#myModal">Schedule</a> </li>
+          <li class="nav-item"> <a class="nav-link" href="Report.php" >Report</a> </li>
+          <li class="nav-item"> <a class="nav-link" href="update.php" >Users</a> </li>
+          <li class="nav-item"><a id="myInput" class="nav-link" href="#!">System</a></li>
+        </ul>
+        <script>
+          const myInput = document.getElementById("myInput");
+          myInput.style.setProperty("cursor", "no-drop", "important");
+        </script>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <!-- Modal header -->
+        <div class="modal-header">
+          <h6 class="modal-title fw-normal">Schedule</h6>
+          <button type="button" class="close btn " data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+              </svg>
+            </span>
+          </button>
+        </div>
+
+
+        <!-- Modal body -->
+        <div class="modal-body">
+                          <div class="d-flex justify-content-start">
+                              <button class="btn btn-outline-primary active mr-2" onclick="showTab('office')" id="office-tab">Office</button> &nbsp;
+                              <button class="btn btn-outline-primary" onclick="showTab('workshop')" id="workshop-tab">Workshop</button>
+                            </div>
+                            <div class="tab-content" id="myTabContent">
+                              <div class="tab-pane fade show active" id="office" role="tabpanel" aria-labelledby="office-tab">
+                                <form action="index.php" class="form-inline" method="POST">
+                                  <div class="row">
+                                    <div class="col-12 schedule_element1">
+                                      Schedule for Office Workers
+                                    </div>
+                                    <div class="col-4">
+                                      <small>Morning Check-in:</small>
+                                    </div>
+                                    <div class="col-4">
+                                      <input class="form-control form-control-sm " type="time" name="min_from" placeholder="From:" step="1" value="01:09:00">
+                                    </div>
+                                    <div class="col-4">
+                                      <input class="form-control form-control-sm" type="time" name="min_to" placeholder="To:" step="1" value="02:30:00">
+                                    </div>
+                                    <div class="col-4">
+                                      <small>Morning warning:</small>
+                                    </div>
+                                    <div class="col-4">
+                                      <input class="form-control form-control-sm" type="time" name="mwar_from" placeholder="From:" step="1" value="02:30:02">
+                                    </div>
+                                    <div class="col-4">
+                                      <input class="form-control form-control-sm" type="time" name="mwar_to" placeholder="To:" step="1" value="02:40:00">
+                                    </div>
+                                    <div class="col-4">
+                                      <small>Morning Reject:</small>
+                                    </div>
+                                    <div class="col-4">
+                                      <input class="form-control form-control-sm" type="time" name="mrej_from" placeholder="From:" step="1" value="02:40:02">
+                                    </div>
+                                    <div class="col-4">
+                                      <input class="form-control form-control-sm" type="time" name="mrej_to" placeholder="To:" step="1" value="06:29:58">
+                                    </div>
+                                    <div class="col-4">
+                                      <small>Lunch Check-out:</small>
+                                    </div>
+                                    <div class="col-4">
+                                      <input class="form-control form-control-sm" type="time" name="lout_from" placeholder="From:" step="1" value="06:30:00">
+                                    </div>
+                                    <div class="col-4">
+                                      <input class="form-control form-control-sm" type="time" name="lout_to" placeholder="To:" step="1" value="07:00:00">
+                                    </div>
+                                    <div class="col-4">
+                                      <small>Afternoon Check-in:</small>
+                                    </div>
+                                    <div class="col-4">
+                                      <input class="form-control form-control-sm" type="time" name="acin_from" placeholder="From:" step="1" value="07:00:10">
+                                    </div>
+                                    <div class="col-4">
+                                      <input class="form-control form-control-sm" type="time" name="acin_to" placeholder="To:" step="1" value="07:30:00">
+                                    </div>
+                                    <div class="col-4">
+                                      <small>Afternoon warning:</small>
+                                    </div>
+                                    <div class="col-4">
+                                      <input class="form-control form-control-sm" type="time" name="awar_from" placeholder="From:" step="1" value="07:30:02">
+                                    </div>
+                                    <div class="col-4">
+                                      <input class="form-control form-control-sm" type="time" name="awar_to" placeholder="To:" step="1" value="07:40:00">
+                                    </div>
+                                    <div class="col-4">
+                                      <small>Afternoon Rejected:</small>
+                                    </div>
+                                    <div class="col-4">
+                                      <input class="form-control form-control-sm" type="time" name="arej_from" placeholder="From:" step="1" value="07:40:03">
+                                    </div>
+                                    <div class="col-4">
+                                      <input class="form-control form-control-sm" type="time" name="arej_to" placeholder="To:" step="1" value="11:20:00">
+                                    </div>
+                                    <div class="col-4">
+                                      <small>Early Leave:</small>
+                                    </div>
+                                    <div class="col-4">
+                                      <input class="form-control form-control-sm" type="time" name="el_from" placeholder="From:" step="1" value="11:28:58">
+                                    </div>
+                                    <div class="col-4">
+                                      <input class="form-control form-control-sm" type="time" name="el_to" placeholder="To:" step="1" value="11:20:03">
+                                    </div>
+                                    <div class="col-4">
+                                      <small>Home Leave:</small>
+                                    </div>
+                                    <div class="col-4">
+                                      <input class="form-control form-control-sm" type="time" name="hl_from" placeholder="From:" step="1" value="11:29:03">
+                                    </div>
+                                    <div class="col-4">
+                                      <input class="form-control form-control-sm" type="time" name="hl_to" placeholder="To:" step="1" value="19:00:00">
+                                    </div>
+                                    <div class="col-12">
+                                      <div class="d-flex justify-content-end mt-3">
+                                        <input type="submit" name="offie_submit" class="btn btn-primary btn-sm" value="Update">
+                                      </div>
+                                    </div>
+                                  </div>
+                                </form>
+                              </div>
+                              <div class="tab-pane fade" id="workshop" role="tabpanel" aria-labelledby="workshop-tab">
+                                <form action="index.php" class="form-inline" method="POST">
+                                  <div class="row">
+                                    <div class="col-12 schedule_element1">
+                                      Schedule for Workshop Workers
+                                    </div>
+                                    <div class="col-4">
+                                      <small>Morning Check-in:</small>
+                                    </div>
+                                    <div class="col-4">
+                                      <input class="form-control form-control-sm " type="time" name="min_from" placeholder="From:" step="1" value="01:01">
+                                    </div>
+                                    <div class="col-4">
+                                      <input class="form-control form-control-sm" type="time" name="min_to" placeholder="To:" step="1" value="02:23:00">
+                                    </div>
+                                    <div class="col-4">
+                                      <small>Morning warning:</small>
+                                    </div>
+                                    <div class="col-4">
+                                      <input class="form-control form-control-sm" type="time" name="mwar_from" placeholder="From:" step="1" value="02:30:02">
+                                    </div>
+                                    <div class="col-4">
+                                      <input class="form-control form-control-sm" type="time" name="mwar_to" placeholder="To:" step="1" value="02:40:00">
+                                    </div>
+                                    <div class="col-4">
+                                      <small>Morning Reject:</small>
+                                    </div>
+                                    <div class="col-4">
+                                      <input class="form-control form-control-sm" type="time" name="mrej_from" placeholder="From:" step="1" value="02:40:02">
+                                    </div>
+                                    <div class="col-4">
+                                      <input class="form-control form-control-sm" type="time" name="mrej_to" placeholder="To:" step="1" value="06:29:58">
+                                    </div>
+                                    <div class="col-4">
+                                      <small>Lunch Check-out:</small>
+                                    </div>
+                                    <div class="col-4">
+                                      <input class="form-control form-control-sm" type="time" name="lout_from" placeholder="From:" step="1" value="06:30:00">
+                                    </div>
+                                    <div class="col-4">
+                                      <input class="form-control form-control-sm" type="time" name="lout_to" placeholder="To:" step="1" value="07:19:58">
+                                    </div>
+                                    <div class="col-4">
+                                      <small>Afternoon Check-in:</small>
+                                    </div>
+                                    <div class="col-4">
+                                      <input class="form-control form-control-sm" type="time" name="acin_from" placeholder="From:" step="1" value="07:20:00">
+                                    </div>
+                                    <div class="col-4">
+                                      <input class="form-control form-control-sm" type="time" name="acin_to" placeholder="To:" step="1" value="07:30:00">
+                                    </div>
+                                    <div class="col-4">
+                                      <small>Afternoon warning:</small>
+                                    </div>
+                                    <div class="col-4">
+                                      <input class="form-control form-control-sm" type="time" name="awar_from" placeholder="From:" step="1" value="07:30:02">
+                                    </div>
+                                    <div class="col-4">
+                                      <input class="form-control form-control-sm" type="time" name="awar_to" placeholder="To:" step="1" value="07:40:00">
+                                    </div>
+                                    <div class="col-4">
+                                      <small>Afternoon Rejected:</small>
+                                    </div>
+                                    <div class="col-4">
+                                      <input class="form-control form-control-sm" type="time" name="arej_from" placeholder="From:" step="1" value="07:40:02">
+                                    </div>
+                                    <div class="col-4">
+                                      <input class="form-control form-control-sm" type="time" name="arej_to" placeholder="To:" step="1" value="11:20:00">
+                                    </div>
+                                    <div class="col-4">
+                                      <small>Early Leave:</small>
+                                    </div>
+                                    <div class="col-4">
+                                      <input class="form-control form-control-sm" type="time" name="el_from" placeholder="From:" step="1" value="11:28:14">
+                                    </div>
+                                    <div class="col-4">
+                                      <input class="form-control form-control-sm" type="time" name="el_to" placeholder="To:" step="1" value="11:20:01">
+                                    </div>
+                                    <div class="col-4">
+                                      <small>Home Leave:</small>
+                                    </div>
+                                    <div class="col-4">
+                                      <input class="form-control form-control-sm" type="time" name="hl_from" placeholder="From:" step="1" value="13:28:15">
+                                    </div>
+                                    <div class="col-4">
+                                      <input class="form-control form-control-sm" type="time" name="hl_to" placeholder="To:" step="1" value="19:00:00">
+                                    </div>
+                                    <div class="col-12">
+                                      <div class="d-flex justify-content-end mt-3">
+                                        <input type="submit" name="workshop_submit" class="btn btn-primary btn-sm" value="Update">
+                                      </div>
+                                    </div>
+                                  </div>
+                                </form>
+                              </div>
+                            </div>
+                            <script>
+                              function showTab(tabName) {
+                                var i, tabContent, tabLinks;
+                                tabContent = document.getElementsByClassName("tab-pane");
+                                for (i = 0; i < tabContent.length; i++) {
+                                  tabContent[i].classList.remove("show", "active");
+                                }
+                                tabLinks = document.getElementsByClassName("btn");
+                                for (i = 0; i < tabLinks.length; i++) {
+                                  tabLinks[i].classList.remove("active");
+                                }
+                                document.getElementById(tabName).classList.add("show", "active");
+                                event.currentTarget.classList.add("active");
+                              }
+                            </script>
+        
+        
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <div class="container mt-3 m-2">
+    <h5 class="title_font mb-1"> User Management </h5>
+    
+
+    <script>
+      window.onload = function() {
+        function dateTime() {
+          var date = new Date();
+          document.getElementById("clock").innerText = date.toLocaleTimeString(
+            'en-US', {
+              hour12: false
+            })
+        };
+        setInterval(dateTime, 1000);
+      };
+    </script>
+    <div class="text-muted ">
+      <a class="badge bg-secondary text-decoration-none link-light text-light " href="#!">Wednesday, July 26, 2023</a>      &nbsp; Time: <span id="clock"></span>&nbsp; </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <section class="py-1">   
+
+
+
+
+
+
+
+
+<div class="container-fluid">
+
+
+
+
+  <div class="row">
+        <div class="col-lg-8 col-md-12 ">
+                    <div class="p-3 card-body  ">
+                        <div class="table-responsive">
+                            <div id="datatable_wrapper" class="dataTables_wrapper dt-bootstrap5">
+                                <div class="table-responsive ">
+                                    <table id="datatable" class="table dataTable" data-toggle="data-table" aria-describedby="datatable_info">
+                                        <thead>
+                                            <tr>
+                                                <th class="  font-weight-light c-font" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">ID</th>
+                                                <th class="font-weight-light c-font" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1">Edit</th>
+                                                <th class="font-weight-light c-font" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1">Delete</th>
+                                                <th class="font-weight-light c-font" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1">Name</th>
+                                                <th class="font-weight-light c-font" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1">Gender</th>
+                                                <th class="font-weight-light c-font" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1">UserID</th>
+                                                <th class="font-weight-light c-font" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1">Phone</th>
+                                                <th class="font-weight-light c-font" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1">BadgeNumber</th>
+                                                <th class="font-weight-light c-font" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1">User Type</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                                                            <tr>
+                                                    <td><p class="text-muted " > 1</p> </td>
+                                                    <td>
+                                                        <a href="update.php?edit=23" class="btn btn-outline-primary ">Edit</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="./function.php?delete_customer=23" class="btn  btn-danger">Delete</a>
+                                                    </td>
+                                                    </td>
+                                                    <td> <p class="text-muted" >Welela Mengstu</p>   </td>
+                                                    <td> <p class="text-muted" >male</p>   </td>
+                                                    <td> <p class="text-muted" >I.P-23</p>   </td>
+                                                    <td> <p class="text-muted" ></p>   </td>
+                                                    <td> <p class="text-muted " >10002</p> </td>
+                                                    <td> <p class="text-muted " >office</p> </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <td><p class="text-muted " > 2</p> </td>
+                                                    <td>
+                                                        <a href="update.php?edit=25" class="btn btn-outline-primary ">Edit</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="./function.php?delete_customer=25" class="btn  btn-danger">Delete</a>
+                                                    </td>
+                                                    </td>
+                                                    <td> <p class="text-muted" >Mesele Medaksa</p>   </td>
+                                                    <td> <p class="text-muted" >male</p>   </td>
+                                                    <td> <p class="text-muted" >I.P-25</p>   </td>
+                                                    <td> <p class="text-muted" ></p>   </td>
+                                                    <td> <p class="text-muted " >100012</p> </td>
+                                                    <td> <p class="text-muted " >office</p> </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <td><p class="text-muted " > 3</p> </td>
+                                                    <td>
+                                                        <a href="update.php?edit=26" class="btn btn-outline-primary ">Edit</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="./function.php?delete_customer=26" class="btn  btn-danger">Delete</a>
+                                                    </td>
+                                                    </td>
+                                                    <td> <p class="text-muted" >Bereket Terfe</p>   </td>
+                                                    <td> <p class="text-muted" >male</p>   </td>
+                                                    <td> <p class="text-muted" >I.P-26</p>   </td>
+                                                    <td> <p class="text-muted" ></p>   </td>
+                                                    <td> <p class="text-muted " >100013</p> </td>
+                                                    <td> <p class="text-muted " >workshop</p> </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <td><p class="text-muted " > 4</p> </td>
+                                                    <td>
+                                                        <a href="update.php?edit=27" class="btn btn-outline-primary ">Edit</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="./function.php?delete_customer=27" class="btn  btn-danger">Delete</a>
+                                                    </td>
+                                                    </td>
+                                                    <td> <p class="text-muted" >Benyam Fikru</p>   </td>
+                                                    <td> <p class="text-muted" ></p>   </td>
+                                                    <td> <p class="text-muted" >I.P-27</p>   </td>
+                                                    <td> <p class="text-muted" ></p>   </td>
+                                                    <td> <p class="text-muted " >100015</p> </td>
+                                                    <td> <p class="text-muted " >workshop</p> </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <td><p class="text-muted " > 5</p> </td>
+                                                    <td>
+                                                        <a href="update.php?edit=28" class="btn btn-outline-primary ">Edit</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="./function.php?delete_customer=28" class="btn  btn-danger">Delete</a>
+                                                    </td>
+                                                    </td>
+                                                    <td> <p class="text-muted" >Nahom Melkiyas</p>   </td>
+                                                    <td> <p class="text-muted" ></p>   </td>
+                                                    <td> <p class="text-muted" >I.P-28</p>   </td>
+                                                    <td> <p class="text-muted" >098765443</p>   </td>
+                                                    <td> <p class="text-muted " >100016</p> </td>
+                                                    <td> <p class="text-muted " >workshop</p> </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <td><p class="text-muted " > 6</p> </td>
+                                                    <td>
+                                                        <a href="update.php?edit=29" class="btn btn-outline-primary ">Edit</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="./function.php?delete_customer=29" class="btn  btn-danger">Delete</a>
+                                                    </td>
+                                                    </td>
+                                                    <td> <p class="text-muted" >Esayas Seba</p>   </td>
+                                                    <td> <p class="text-muted" ></p>   </td>
+                                                    <td> <p class="text-muted" >I.P-29</p>   </td>
+                                                    <td> <p class="text-muted" ></p>   </td>
+                                                    <td> <p class="text-muted " >100017</p> </td>
+                                                    <td> <p class="text-muted " >workshop</p> </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <td><p class="text-muted " > 7</p> </td>
+                                                    <td>
+                                                        <a href="update.php?edit=30" class="btn btn-outline-primary ">Edit</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="./function.php?delete_customer=30" class="btn  btn-danger">Delete</a>
+                                                    </td>
+                                                    </td>
+                                                    <td> <p class="text-muted" >Birhane Melese</p>   </td>
+                                                    <td> <p class="text-muted" ></p>   </td>
+                                                    <td> <p class="text-muted" >I.P-30</p>   </td>
+                                                    <td> <p class="text-muted" ></p>   </td>
+                                                    <td> <p class="text-muted " >100019</p> </td>
+                                                    <td> <p class="text-muted " >workshop</p> </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <td><p class="text-muted " > 8</p> </td>
+                                                    <td>
+                                                        <a href="update.php?edit=31" class="btn btn-outline-primary ">Edit</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="./function.php?delete_customer=31" class="btn  btn-danger">Delete</a>
+                                                    </td>
+                                                    </td>
+                                                    <td> <p class="text-muted" >Ayelech Girma</p>   </td>
+                                                    <td> <p class="text-muted" ></p>   </td>
+                                                    <td> <p class="text-muted" >I.P-31</p>   </td>
+                                                    <td> <p class="text-muted" ></p>   </td>
+                                                    <td> <p class="text-muted " >100020</p> </td>
+                                                    <td> <p class="text-muted " >workshop</p> </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <td><p class="text-muted " > 9</p> </td>
+                                                    <td>
+                                                        <a href="update.php?edit=32" class="btn btn-outline-primary ">Edit</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="./function.php?delete_customer=32" class="btn  btn-danger">Delete</a>
+                                                    </td>
+                                                    </td>
+                                                    <td> <p class="text-muted" >Mekdes Hailu</p>   </td>
+                                                    <td> <p class="text-muted" ></p>   </td>
+                                                    <td> <p class="text-muted" >I.P-32</p>   </td>
+                                                    <td> <p class="text-muted" ></p>   </td>
+                                                    <td> <p class="text-muted " >100021</p> </td>
+                                                    <td> <p class="text-muted " >workshop</p> </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <td><p class="text-muted " > 10</p> </td>
+                                                    <td>
+                                                        <a href="update.php?edit=33" class="btn btn-outline-primary ">Edit</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="./function.php?delete_customer=33" class="btn  btn-danger">Delete</a>
+                                                    </td>
+                                                    </td>
+                                                    <td> <p class="text-muted" >Firehiwot Alemu</p>   </td>
+                                                    <td> <p class="text-muted" >female</p>   </td>
+                                                    <td> <p class="text-muted" >I.P-33</p>   </td>
+                                                    <td> <p class="text-muted" >0987654323</p>   </td>
+                                                    <td> <p class="text-muted " >100022</p> </td>
+                                                    <td> <p class="text-muted " >workshop</p> </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <td><p class="text-muted " > 11</p> </td>
+                                                    <td>
+                                                        <a href="update.php?edit=34" class="btn btn-outline-primary ">Edit</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="./function.php?delete_customer=34" class="btn  btn-danger">Delete</a>
+                                                    </td>
+                                                    </td>
+                                                    <td> <p class="text-muted" >Koyta Wene</p>   </td>
+                                                    <td> <p class="text-muted" ></p>   </td>
+                                                    <td> <p class="text-muted" >I.P-34</p>   </td>
+                                                    <td> <p class="text-muted" ></p>   </td>
+                                                    <td> <p class="text-muted " >100023</p> </td>
+                                                    <td> <p class="text-muted " ></p> </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <td><p class="text-muted " > 12</p> </td>
+                                                    <td>
+                                                        <a href="update.php?edit=35" class="btn btn-outline-primary ">Edit</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="./function.php?delete_customer=35" class="btn  btn-danger">Delete</a>
+                                                    </td>
+                                                    </td>
+                                                    <td> <p class="text-muted" >Webit Eda</p>   </td>
+                                                    <td> <p class="text-muted" ></p>   </td>
+                                                    <td> <p class="text-muted" >I.P-35</p>   </td>
+                                                    <td> <p class="text-muted" ></p>   </td>
+                                                    <td> <p class="text-muted " >100024</p> </td>
+                                                    <td> <p class="text-muted " ></p> </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <td><p class="text-muted " > 13</p> </td>
+                                                    <td>
+                                                        <a href="update.php?edit=36" class="btn btn-outline-primary ">Edit</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="./function.php?delete_customer=36" class="btn  btn-danger">Delete</a>
+                                                    </td>
+                                                    </td>
+                                                    <td> <p class="text-muted" >Simegn Getachew</p>   </td>
+                                                    <td> <p class="text-muted" ></p>   </td>
+                                                    <td> <p class="text-muted" >I.P-36</p>   </td>
+                                                    <td> <p class="text-muted" ></p>   </td>
+                                                    <td> <p class="text-muted " >100026</p> </td>
+                                                    <td> <p class="text-muted " ></p> </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <td><p class="text-muted " > 14</p> </td>
+                                                    <td>
+                                                        <a href="update.php?edit=37" class="btn btn-outline-primary ">Edit</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="./function.php?delete_customer=37" class="btn  btn-danger">Delete</a>
+                                                    </td>
+                                                    </td>
+                                                    <td> <p class="text-muted" >Bereket  Werkagegnw</p>   </td>
+                                                    <td> <p class="text-muted" ></p>   </td>
+                                                    <td> <p class="text-muted" >I.P-37</p>   </td>
+                                                    <td> <p class="text-muted" ></p>   </td>
+                                                    <td> <p class="text-muted " >100027</p> </td>
+                                                    <td> <p class="text-muted " ></p> </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <td><p class="text-muted " > 15</p> </td>
+                                                    <td>
+                                                        <a href="update.php?edit=38" class="btn btn-outline-primary ">Edit</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="./function.php?delete_customer=38" class="btn  btn-danger">Delete</a>
+                                                    </td>
+                                                    </td>
+                                                    <td> <p class="text-muted" >Firew Amerga</p>   </td>
+                                                    <td> <p class="text-muted" ></p>   </td>
+                                                    <td> <p class="text-muted" >I.P-38</p>   </td>
+                                                    <td> <p class="text-muted" ></p>   </td>
+                                                    <td> <p class="text-muted " >100028</p> </td>
+                                                    <td> <p class="text-muted " ></p> </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <td><p class="text-muted " > 16</p> </td>
+                                                    <td>
+                                                        <a href="update.php?edit=39" class="btn btn-outline-primary ">Edit</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="./function.php?delete_customer=39" class="btn  btn-danger">Delete</a>
+                                                    </td>
+                                                    </td>
+                                                    <td> <p class="text-muted" >Zegeye kamiso</p>   </td>
+                                                    <td> <p class="text-muted" ></p>   </td>
+                                                    <td> <p class="text-muted" >I.P-39</p>   </td>
+                                                    <td> <p class="text-muted" ></p>   </td>
+                                                    <td> <p class="text-muted " >100030</p> </td>
+                                                    <td> <p class="text-muted " ></p> </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <td><p class="text-muted " > 17</p> </td>
+                                                    <td>
+                                                        <a href="update.php?edit=40" class="btn btn-outline-primary ">Edit</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="./function.php?delete_customer=40" class="btn  btn-danger">Delete</a>
+                                                    </td>
+                                                    </td>
+                                                    <td> <p class="text-muted" >Mechael Setu</p>   </td>
+                                                    <td> <p class="text-muted" ></p>   </td>
+                                                    <td> <p class="text-muted" >I.P-40</p>   </td>
+                                                    <td> <p class="text-muted" ></p>   </td>
+                                                    <td> <p class="text-muted " >100031</p> </td>
+                                                    <td> <p class="text-muted " ></p> </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <td><p class="text-muted " > 18</p> </td>
+                                                    <td>
+                                                        <a href="update.php?edit=41" class="btn btn-outline-primary ">Edit</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="./function.php?delete_customer=41" class="btn  btn-danger">Delete</a>
+                                                    </td>
+                                                    </td>
+                                                    <td> <p class="text-muted" >Biruk Admasu</p>   </td>
+                                                    <td> <p class="text-muted" ></p>   </td>
+                                                    <td> <p class="text-muted" >I.P-41</p>   </td>
+                                                    <td> <p class="text-muted" ></p>   </td>
+                                                    <td> <p class="text-muted " >100032</p> </td>
+                                                    <td> <p class="text-muted " ></p> </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <td><p class="text-muted " > 19</p> </td>
+                                                    <td>
+                                                        <a href="update.php?edit=42" class="btn btn-outline-primary ">Edit</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="./function.php?delete_customer=42" class="btn  btn-danger">Delete</a>
+                                                    </td>
+                                                    </td>
+                                                    <td> <p class="text-muted" >Amare Ankalo</p>   </td>
+                                                    <td> <p class="text-muted" ></p>   </td>
+                                                    <td> <p class="text-muted" >I.P-42</p>   </td>
+                                                    <td> <p class="text-muted" ></p>   </td>
+                                                    <td> <p class="text-muted " >100034</p> </td>
+                                                    <td> <p class="text-muted " ></p> </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <td><p class="text-muted " > 20</p> </td>
+                                                    <td>
+                                                        <a href="update.php?edit=43" class="btn btn-outline-primary ">Edit</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="./function.php?delete_customer=43" class="btn  btn-danger">Delete</a>
+                                                    </td>
+                                                    </td>
+                                                    <td> <p class="text-muted" >Setu Getachew</p>   </td>
+                                                    <td> <p class="text-muted" ></p>   </td>
+                                                    <td> <p class="text-muted" >I.P-43</p>   </td>
+                                                    <td> <p class="text-muted" ></p>   </td>
+                                                    <td> <p class="text-muted " >100002011</p> </td>
+                                                    <td> <p class="text-muted " ></p> </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <td><p class="text-muted " > 21</p> </td>
+                                                    <td>
+                                                        <a href="update.php?edit=44" class="btn btn-outline-primary ">Edit</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="./function.php?delete_customer=44" class="btn  btn-danger">Delete</a>
+                                                    </td>
+                                                    </td>
+                                                    <td> <p class="text-muted" >Emebet Zerihun</p>   </td>
+                                                    <td> <p class="text-muted" ></p>   </td>
+                                                    <td> <p class="text-muted" >I.P-44</p>   </td>
+                                                    <td> <p class="text-muted" ></p>   </td>
+                                                    <td> <p class="text-muted " >100002012</p> </td>
+                                                    <td> <p class="text-muted " ></p> </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <td><p class="text-muted " > 22</p> </td>
+                                                    <td>
+                                                        <a href="update.php?edit=45" class="btn btn-outline-primary ">Edit</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="./function.php?delete_customer=45" class="btn  btn-danger">Delete</a>
+                                                    </td>
+                                                    </td>
+                                                    <td> <p class="text-muted" >Yihun Kebenesa</p>   </td>
+                                                    <td> <p class="text-muted" ></p>   </td>
+                                                    <td> <p class="text-muted" >I.P-45</p>   </td>
+                                                    <td> <p class="text-muted" ></p>   </td>
+                                                    <td> <p class="text-muted " >100002014</p> </td>
+                                                    <td> <p class="text-muted " ></p> </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <td><p class="text-muted " > 23</p> </td>
+                                                    <td>
+                                                        <a href="update.php?edit=46" class="btn btn-outline-primary ">Edit</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="./function.php?delete_customer=46" class="btn  btn-danger">Delete</a>
+                                                    </td>
+                                                    </td>
+                                                    <td> <p class="text-muted" >Lemlem Negusu</p>   </td>
+                                                    <td> <p class="text-muted" ></p>   </td>
+                                                    <td> <p class="text-muted" >I.P-46</p>   </td>
+                                                    <td> <p class="text-muted" ></p>   </td>
+                                                    <td> <p class="text-muted " >100002015</p> </td>
+                                                    <td> <p class="text-muted " ></p> </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <td><p class="text-muted " > 24</p> </td>
+                                                    <td>
+                                                        <a href="update.php?edit=47" class="btn btn-outline-primary ">Edit</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="./function.php?delete_customer=47" class="btn  btn-danger">Delete</a>
+                                                    </td>
+                                                    </td>
+                                                    <td> <p class="text-muted" >Tegestu Weldeyesus</p>   </td>
+                                                    <td> <p class="text-muted" ></p>   </td>
+                                                    <td> <p class="text-muted" >I.P-47</p>   </td>
+                                                    <td> <p class="text-muted" ></p>   </td>
+                                                    <td> <p class="text-muted " >100002016</p> </td>
+                                                    <td> <p class="text-muted " ></p> </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <td><p class="text-muted " > 25</p> </td>
+                                                    <td>
+                                                        <a href="update.php?edit=48" class="btn btn-outline-primary ">Edit</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="./function.php?delete_customer=48" class="btn  btn-danger">Delete</a>
+                                                    </td>
+                                                    </td>
+                                                    <td> <p class="text-muted" >Befkadu</p>   </td>
+                                                    <td> <p class="text-muted" ></p>   </td>
+                                                    <td> <p class="text-muted" >I.P-48</p>   </td>
+                                                    <td> <p class="text-muted" ></p>   </td>
+                                                    <td> <p class="text-muted " >100002017</p> </td>
+                                                    <td> <p class="text-muted " ></p> </td>
+                                                </tr>
+                                                                                            <tr>
+                                                    <td><p class="text-muted " > 26</p> </td>
+                                                    <td>
+                                                        <a href="update.php?edit=61" class="btn btn-outline-primary ">Edit</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="./function.php?delete_customer=61" class="btn  btn-danger">Delete</a>
+                                                    </td>
+                                                    </td>
+                                                    <td> <p class="text-muted" >bereket kassahun</p>   </td>
+                                                    <td> <p class="text-muted" >M</p>   </td>
+                                                    <td> <p class="text-muted" >I.P-61</p>   </td>
+                                                    <td> <p class="text-muted" >0978675643</p>   </td>
+                                                    <td> <p class="text-muted " >100002018</p> </td>
+                                                    <td> <p class="text-muted " >office</p> </td>
+                                                </tr>
+                                                                                    </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+
+
+                    <script>
+        //datatable
+        $(document).ready(function() {
+            $('#datatable').DataTable();
+        });
+        
+    </script>
+    <script src="./assets/js/jquery-3.5.1.js"></script>
+    <script src="./assets/js/jquery.dataTables.min.js"></script>
+    <script src="./assets/js/dataTables.min.js"></script>
+    
+    
+    <div class="col-lg-4 col-md-12">
+      
+    <div class="card-body form-upload_wrapper">
+  <div class="d-flex justify-content-start">
+    <button class="btn btn-outline-primary active mr-2" data-tab="office">Manage User</button> &nbsp;
+    <button class="btn btn-outline-primary" data-tab="workshop">Forget clock in/out</button> &nbsp;
+    <button class="btn btn-outline-primary" data-tab="custom">Leave</button>
+  </div>
+
+
+  <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="office" role="tabpanel" aria-labelledby="office-tab">
+      
+
+    <style>
+            #Input {
+                pointer-events:none;
+                 cursor: no-drop !important;
+                  }
+        </style>
+
+        <p class="form-detail text-primary"><br>Edit Basic User Data.</p>
+
+        <form action="./function.php" method="POST" autocomplete="">
+
+        <input type="hidden" name="id" value="0">
+            <div class="form-group">
+                <small for="username">User name</small>                
+                <input class="form-control" id="Input" type="text" placeholder="Enter User Name" value="">
+            </div>
+           
+
+            <div class="form-group">
+              <small>Gender</small><br>
+              <input type="radio" name="usr_gender" value="male"> Male
+              <input type="radio" name="usr_gender" value="female"> Female
+            </div>
+
+            <div class="form-group">
+                <small for="username">Phone</small>                
+                <input class="form-control" type="number" name="usr_phone" placeholder="Enter User Name" value="" >
+            </div>
+           
+            <div class="form-group">
+                <small for="password">User type</small>
+                <select class="form-select" name="user_type" aria-label="Default select example">
+                    <option value="office">office</option>
+                    <option value="workshop">workshop</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+            <button type="submit" name="update_customer" value="Signup" class="btn btn-primary mt-2">update Data</button>
+            </div>
+      
+          </form>
+    </div>
+
+
+
+
+
+
+
+    <div class="tab-pane fade" id="workshop" role="tabpanel" aria-labelledby="workshop-tab">   
+
+
+    <br>
+    <p class="form-detail text-primary">Forget to clock in/out  User Data.</p>
+
+    <form action="./function.php" method="POST" autocomplete="">
+
+
+    <div class="form-group">
+        <small>User name</small>
+        <select class="form-select" name="user" id="agent"><option value="23">Welela Mengstu</option><option value="25">Mesele Medaksa</option><option value="26">Bereket Terfe</option><option value="27">Benyam Fikru</option><option value="28">Nahom Melkiyas</option><option value="29">Esayas Seba</option><option value="30">Birhane Melese</option><option value="31">Ayelech Girma</option><option value="32">Mekdes Hailu</option><option value="33">Firehiwot Alemu</option><option value="34">Koyta Wene</option><option value="35">Webit Eda</option><option value="36">Simegn Getachew</option><option value="37">Bereket  Werkagegnw</option><option value="38">Firew Amerga</option><option value="39">Zegeye kamiso</option><option value="40">Mechael Setu</option><option value="41">Biruk Admasu</option><option value="42">Amare Ankalo</option><option value="43">Setu Getachew</option><option value="44">Emebet Zerihun</option><option value="45">Yihun Kebenesa</option><option value="46">Lemlem Negusu</option><option value="47">Tegestu Weldeyesus</option><option value="48">Befkadu</option><option value="61">bereket kassahun</option></select>      </div>
+
+
+
+   <div class="form-group">
+        <small for="password">Select State type</small>
+        <select class="form-select" name="clock_type" aria-label="Default select example">
+            <option value="I">Clock-in</option>
+            <option value="O">Clock-out</option>
+        </select>
+    </div>
+
+
+    <div class="form-group">
+
+  <small for="my_datetime">Select Date and Time:</small>
+  <input class="form-control" type="datetime-local" step="1" id="my_datetime" name="my_datetime">
+    </div>
+
+    <div class="form-group">
+    <button type="submit" name="forget" value="Signup" class="btn btn-primary mt-2">Submit</button>
+    </div>
+</form>
+    </div>
+
+
+
+
+
+
+
+
+    <div class="tab-pane fade" id="custom" role="tabpanel" aria-labelledby="custom-tab">
+    <p class="form-detail text-primary"><br> Leave Ticker </p>
+
+      <form action="./function.php" class="form-inline" method="POST">
+      <div class="form-group">
+        <small>User name</small>
+        <select class="form-select" name="user" id="agent"><option value="23">Welela Mengstu</option><option value="25">Mesele Medaksa</option><option value="26">Bereket Terfe</option><option value="27">Benyam Fikru</option><option value="28">Nahom Melkiyas</option><option value="29">Esayas Seba</option><option value="30">Birhane Melese</option><option value="31">Ayelech Girma</option><option value="32">Mekdes Hailu</option><option value="33">Firehiwot Alemu</option><option value="34">Koyta Wene</option><option value="35">Webit Eda</option><option value="36">Simegn Getachew</option><option value="37">Bereket  Werkagegnw</option><option value="38">Firew Amerga</option><option value="39">Zegeye kamiso</option><option value="40">Mechael Setu</option><option value="41">Biruk Admasu</option><option value="42">Amare Ankalo</option><option value="43">Setu Getachew</option><option value="44">Emebet Zerihun</option><option value="45">Yihun Kebenesa</option><option value="46">Lemlem Negusu</option><option value="47">Tegestu Weldeyesus</option><option value="48">Befkadu</option><option value="61">bereket kassahun</option></select>      </div>
+      <input type="hidden" name="user_type" value="">
+      <div class="form-group">
+        <small for="from_date">From Date</small>
+        <input class="form-control" type="date" name="from_date" id="from_date">
+      </div>
+      <div class="form-group">
+        <small for="to_date">To Date</small>
+        <input class="form-control" type="date" name="to_date" id="to_date">
+      </div>
+      <div class="form-group">
+    <button type="submit" name="leave" value="Signup" class="btn btn-primary mt-2">Submit</button>
+    </div> 
+
+      </form>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</div>
+
+
+<script>
+  const buttons = document.querySelectorAll('[data-tab]');
+  const tabContent = document.querySelectorAll('.tab-pane');
+
+  buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const tabName = button.dataset.tab;
+      buttons.forEach(btn => btn.classList.remove('active'));
+      button.classList.add('active');
+      tabContent.forEach(tab => {
+        if (tab.getAttribute('id') === tabName) {
+          tab.classList.add('show', 'active');
+        } else {
+          tab.classList.remove('show', 'active');
+        }
+      });
+    });
+  });
+
+</script>
+</div>
+</div>
+</div>
+<style>
+  .btnsize {
+
+    padding: 0px 8px;
+
+  }
+</style>
+
+</section>
+
+  <!-- Copyright Start -->
+  <div class="container-fluid copyright bg-black footer">
+    <div class="container-fluid ">
+      <div class="row">
+        <div class="col-md-6 text-center text-md-start  mb-md-0 text-secondary">
+          &copy; <span class="fw-medium" href="#"> <small>Image Printing, All Right Reserved.</small> </span>
+        </div>
+        <div class="col-md-6 text-center text-md-end text-secondary">
+          <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+          <small>Developed By : Bereket - 0932715312</small>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Copyright End -->
+
+
+  <!-- Bootstrap core JS-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Core theme JS-->
+  <script src="js/scripts.js"></script>
+</body>
+
+</html>

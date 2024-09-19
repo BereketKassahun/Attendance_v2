@@ -1,0 +1,1438 @@
+    
+
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+      <meta name="description" content="" />
+      <meta name="author" content="" />
+      <title>Home</title>
+      <!-- Favicon-->
+      <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+      <!-- Bootstrap icons-->
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+      <!-- Core theme CSS (includes Bootstrap)-->
+      <link href="../css/styles.css" rel="stylesheet" />
+      <link href="../css/corrector.css" rel="stylesheet">
+      <link href="../css/dataTables.min.css" rel="stylesheet">
+
+
+
+      <script src="../js/jquery.min.js"></script>
+      <script src="../js/popper.min.js"></script>
+      <script src="../js/bootstrap.min.js"></script>
+    </head>
+
+    <body>
+      <!-- Navigation-->
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <!--  <a class="navbar-brand m-0" href="#!">
+            <img class="ms-0 mb-1" src="./assets/image/image_logo.png" width="32px" height="30px"> Image Printing</a>
+                    -->
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <span class="lead mb-1"> Image Printing Org. | </span> &nbsp;
+
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+              <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
+              <li class="nav-item"> <a class="nav-link" href="#" data-toggle="modal" data-target="#myModal">Schedule</a> </li>
+              <li class="nav-item"> <a class="nav-link" href="Report.php">Report</a> </li>
+              <li class="nav-item"> <a class="nav-link" href="update.php">Users</a> </li>
+              <li class="nav-item"><a id="myInput" class="nav-link" href="#!">System</a></li>
+            </ul>
+            <script>
+              const myInput = document.getElementById("myInput");
+              myInput.style.setProperty("cursor", "no-drop", "important");
+            </script>
+          </div>
+          &nbsp; <button type="submit" onclick="window.location.href = '../index.php'" value="Continue" class="btn  btn-outline-secondary">Logout</button>
+
+        </div>
+      </nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <!-- Modal -->
+      <div class="modal fade" id="myModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+
+            <!-- Modal header -->
+            <div class="modal-header">
+              <h6 class="modal-title fw-normal">Schedule</h6>
+              <button type="button" class="close btn " data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                    <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
+                  </svg>
+                </span>
+              </button>
+            </div>
+
+
+            <!-- Modal body -->
+            <div class="modal-body">
+              <div class="d-flex justify-content-start">
+                <button class="btn btn-outline-primary active mr-2" onclick="showTab('office')" id="office-tab">Office</button> &nbsp;
+                <button class="btn btn-outline-primary" onclick="showTab('workshop')" id="workshop-tab">Workshop</button>
+              </div>
+              <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="office" role="tabpanel" aria-labelledby="office-tab">
+                  <form action="update.php" class="form-inline" method="POST">
+                  <div class="row">
+                                    <div class="col-12 schedule_element1">
+                                      Schedule for Office Workers<br>
+                                      <lable for="datetime"><br> Time (HH:MM:SS)</lable>
+
+                                    </div>
+
+
+                                    <div class="col-4">
+                                      <small>Morning Check-in:</small>
+                                    </div>
+                                    <div class="col-4">
+                                      <input class="form-control form-control-sm" pattern="(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]" type="text" name="min_from" placeholder="From:- 00:00:00" step="1" value="01:00:00">
+                                    </div>
+                                    <div class="col-4">
+                                      <input class="form-control form-control-sm" pattern="(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]" type="text" name="min_to" placeholder="To:- 00:00:00" step="1" value="03:00">
+                                    </div>
+                                    <div class="col-4">
+                                      <small>Morning warning:</small>
+                                    </div>
+                                    <div class="col-4">
+                                      <input class="form-control form-control-sm" pattern="(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]" type="text" name="mwar_from" placeholder="From:- 00:00:00" step="1" value="02:30:01">
+                                    </div>
+                                    <div class="col-4">
+                                      <input class="form-control form-control-sm" pattern="(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]" type="text" name="mwar_to" placeholder="To:- 00:00:00" step="1" value="02:40:00">
+                                    </div>
+                                    <div class="col-4">
+                                      <small>Morning Reject:</small>
+                                    </div>
+                                    <div class="col-4">
+                                      <input class="form-control form-control-sm" pattern="(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]" type="text" name="mrej_from" placeholder="From:- 00:00:00" step="1" value="02:40:01">
+                                    </div>
+                                    <div class="col-4">
+                                      <input class="form-control form-control-sm" pattern="(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]" type="text" name="mrej_to" placeholder="To:- 00:00:00" step="1" value="06:29:59">
+                                    </div>
+                                    <div class="col-4">
+                                      <small>Lunch Check-out:</small>
+                                    </div>
+                                    <div class="col-4">
+                                      <input class="form-control form-control-sm" pattern="(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]" type="text" name="lout_from" placeholder="From:- 00:00:00" step="1" value="06:30:00">
+                                    </div>
+                                    <div class="col-4">
+                                      <input class="form-control form-control-sm" pattern="(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]" type="text" name="lout_to" placeholder="To:- 00:00:00" step="1" value="07:30:00">
+                                    </div>
+                                    <div class="col-4">
+                                      <small>Afternoon Check-in:</small>
+                                    </div>
+                                    <div class="col-4">
+                                      <input class="form-control form-control-sm" pattern="(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]" type="text" name="acin_from" placeholder="From:- 00:00:00" step="1" value="07:30:01">
+                                    </div>
+                                    <div class="col-4">
+                                      <input class="form-control form-control-sm" pattern="(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]" type="text" name="acin_to" placeholder="To:- 00:00:00" step="1" value="08:00:00">
+                                    </div>
+                                    <div class="col-4">
+                                      <small>Afternoon warning:</small>
+                                    </div>
+                                    <div class="col-4">
+                                      <input class="form-control form-control-sm" pattern="(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]" type="text" name="awar_from" placeholder="From:- 00:00:00" step="1" value="08:00:01">
+                                    </div>
+                                    <div class="col-4">
+                                      <input class="form-control form-control-sm" pattern="(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]" type="text" name="awar_to" placeholder="To:- 00:00:00" step="1" value="08:10:00">
+                                    </div>
+                                    <div class="col-4">
+                                      <small>Afternoon Rejected:</small>
+                                    </div>
+                                    <div class="col-4">
+                                      <input class="form-control form-control-sm" pattern="(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]" type="text" name="arej_from" placeholder="From:- 00:00:00" step="1" value="08:10:01">
+                                    </div>
+                                    <div class="col-4">
+                                      <input class="form-control form-control-sm" pattern="(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]" type="text" name="arej_to" placeholder="To:- 00:00:00" step="1" value="11:50:00">
+                                    </div>
+                                    <div class="col-4">
+                                      <small>Early Leave:</small>
+                                    </div>
+                                    <div class="col-4">
+                                      <input class="form-control form-control-sm" pattern="(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]" type="text" name="el_from" placeholder="From:- 00:00:00" step="1" value="11:50:01">
+                                    </div>
+                                    <div class="col-4">
+                                      <input class="form-control form-control-sm" pattern="(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]" type="text" name="el_to" placeholder="To:- 00:00:00" step="1" value="12:00:00">
+                                    </div>
+                                    <div class="col-4">
+                                      <small>Home Leave:</small>
+                                    </div>
+                                    <div class="col-4">
+                                      <input class="form-control form-control-sm" pattern="(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]" type="text" name="hl_from" placeholder="From:- 00:00:00" step="1" value="12:00:01">
+                                    </div>
+                                    <div class="col-4">
+                                      <input class="form-control form-control-sm" pattern="(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]" type="text" name="hl_to" placeholder="To:- 00:00:00" step="1" value="23:00:00">
+                                    </div>
+                                    <div class="col-12">
+                                      <div class="d-flex justify-content-end mt-3">
+                                        <input type="submit" name="offie_submit" class="btn btn-primary btn-sm" value="Update">
+                                      </div>
+                                    </div>
+                                  </div>
+                  </form>
+                </div>
+                <div class="tab-pane fade" id="workshop" role="tabpanel" aria-labelledby="workshop-tab">
+                  <form action="update.php" class="form-inline" method="POST">
+                  <div class="row">
+                                    <div class="col-12 schedule_element1">
+                                      Schedule for Workshop Workers
+                                      <lable for="datetime"><br> Time (HH:MM:SS)</lable>
+
+                                    </div>
+                                    <div class="col-4">
+                                      <small>Morning Check-in:</small>
+                                    </div>
+                                    <div class="col-4">
+                                      <input class="form-control form-control-sm" pattern="(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]"  type="text" name="min_from" placeholder="From:- 00:00:00" step="1" value="01:01">
+                                    </div>
+                                    <div class="col-4">
+                                      <input class="form-control form-control-sm" pattern="(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]"  type="text" name="min_to" placeholder="To:- 00:00:00" step="1" value="">
+                                    </div>
+                                    <div class="col-4">
+                                      <small>Morning warning:</small>
+                                    </div>
+                                    <div class="col-4">
+                                      <input class="form-control form-control-sm" pattern="(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]"  type="text" name="mwar_from" placeholder="From:- 00:00:00" step="1" value="02:30:01">
+                                    </div>
+                                    <div class="col-4">
+                                      <input class="form-control form-control-sm" pattern="(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]"  type="text" name="mwar_to" placeholder="To:- 00:00:00" step="1" value="02:40:00">
+                                    </div>
+                                    <div class="col-4">
+                                      <small>Morning Reject:</small>
+                                    </div>
+                                    <div class="col-4">
+                                      <input class="form-control form-control-sm" pattern="(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]"  type="text" name="mrej_from" placeholder="From:- 00:00:00" step="1" value="02:40:01">
+                                    </div>
+                                    <div class="col-4">
+                                      <input class="form-control form-control-sm" pattern="(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]"  type="text" name="mrej_to" placeholder="To:- 00:00:00" step="1" value="06:29:59">
+                                    </div>
+                                    <div class="col-4">
+                                      <small>Lunch Check-out:</small>
+                                    </div>
+                                    <div class="col-4">
+                                      <input class="form-control form-control-sm" pattern="(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]"  type="text" name="lout_from" placeholder="From:- 00:00:00" step="1" value="06:30:00">
+                                    </div>
+                                    <div class="col-4">
+                                      <input class="form-control form-control-sm" pattern="(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]"  type="text" name="lout_to" placeholder="To:- 00:00:00" step="1" value="07:19:59">
+                                    </div>
+                                    <div class="col-4">
+                                      <small>Afternoon Check-in:</small>
+                                    </div>
+                                    <div class="col-4">
+                                      <input class="form-control form-control-sm" pattern="(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]"  type="text" name="acin_from" placeholder="From:- 00:00:00" step="1" value="07:20:00">
+                                    </div>
+                                    <div class="col-4">
+                                      <input class="form-control form-control-sm" pattern="(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]"  type="text" name="acin_to" placeholder="To:- 00:00:00" step="1" value="07:30:00">
+                                    </div>
+                                    <div class="col-4">
+                                      <small>Afternoon warning:</small>
+                                    </div>
+                                    <div class="col-4">
+                                      <input class="form-control form-control-sm" pattern="(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]"  type="text" name="awar_from" placeholder="From:- 00:00:00" step="1" value="07:30:01">
+                                    </div>
+                                    <div class="col-4">
+                                      <input class="form-control form-control-sm" pattern="(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]"  type="text" name="awar_to" placeholder="To:- 00:00:00" step="1" value="07:40:00">
+                                    </div>
+                                    <div class="col-4">
+                                      <small>Afternoon Rejected:</small>
+                                    </div>
+                                    <div class="col-4">
+                                      <input class="form-control form-control-sm" pattern="(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]"  type="text" name="arej_from" placeholder="From:- 00:00:00" step="1" value="07:40:01">
+                                    </div>
+                                    <div class="col-4">
+                                      <input class="form-control form-control-sm" pattern="(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]"  type="text" name="arej_to" placeholder="To:- 00:00:00" step="1" value="11:20:00">
+                                    </div>
+                                    <div class="col-4">
+                                      <small>Early Leave:</small>
+                                    </div>
+                                    <div class="col-4">
+                                      <input class="form-control form-control-sm" pattern="(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]"  type="text" name="el_from" placeholder="From:- 00:00:00" step="1" value="11:20:01">
+                                    </div>
+                                    <div class="col-4">
+                                      <input class="form-control form-control-sm" pattern="(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]"  type="text" name="el_to" placeholder="To:- 00:00:00" step="1" value="11:30:00">
+                                    </div>
+                                    <div class="col-4">
+                                      <small>Home Leave:</small>
+                                    </div>
+                                    <div class="col-4">
+                                      <input class="form-control form-control-sm" pattern="(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]"  type="text" name="hl_from" placeholder="From:- 00:00:00" step="1" value="11:30:01">
+                                    </div>
+                                    <div class="col-4">
+                                      <input class="form-control form-control-sm" pattern="(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]"  type="text" name="hl_to" placeholder="To:- 00:00:00" step="1" value="19:00:00">
+                                    </div>
+                                    <div class="col-12">
+                                      <div class="d-flex justify-content-end mt-3">
+                                        <input type="submit" name="workshop_submit" class="btn btn-primary btn-sm" value="Update">
+                                      </div>
+                                    </div>
+                                  </div>
+                  </form>
+                </div>
+              </div>
+              <script>
+                function showTab(tabName) {
+                  var i, tabContent, tabLinks;
+                  tabContent = document.getElementsByClassName("tab-pane");
+                  for (i = 0; i < tabContent.length; i++) {
+                    tabContent[i].classList.remove("show", "active");
+                  }
+                  tabLinks = document.getElementsByClassName("btn");
+                  for (i = 0; i < tabLinks.length; i++) {
+                    tabLinks[i].classList.remove("active");
+                  }
+                  document.getElementById(tabName).classList.add("show", "active");
+                  event.currentTarget.classList.add("active");
+                }
+              </script>
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <div class="container mt-3 m-2">
+        <h5 class="title_font mb-1"> User Management </h5>
+
+
+        <script>
+          window.onload = function() {
+            function dateTime() {
+              var date = new Date();
+              document.getElementById("clock").innerText = date.toLocaleTimeString(
+                'en-US', {
+                  hour12: false
+                })
+            };
+            setInterval(dateTime, 1000);
+          };
+        </script>
+        <div class="text-muted ">
+          <a class="badge bg-secondary text-decoration-none link-light text-light " href="#!">Tuesday, September 12, 2023</a>          &nbsp; Time: <span id="clock"></span>&nbsp; </div>
+      </div>
+
+
+
+            
+
+      <section class="py-1">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-lg-8 col-md-12 ">
+              <div class="p-3 card-body  ">
+                <div class="table-responsive">
+                  <div id="datatable_wrapper" class="dataTables_wrapper dt-bootstrap5">
+                    <div class="table-responsive ">
+                      <table id="datatable" class="table dataTable" data-toggle="data-table" aria-describedby="datatable_info">
+                        <thead>
+                          <tr>
+                            <th class="  font-weight-light c-font" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1" aria-sort="ascending">ID</th>
+                            <th class="font-weight-light c-font" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1">Edit</th>
+                            <th class="font-weight-light c-font" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1">Delete</th>
+                            <th class="font-weight-light c-font" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1"></th>
+                            <th class="font-weight-light c-font" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1">Name</th>
+                            <th class="font-weight-light c-font" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1"></th>
+                            <th class="font-weight-light c-font" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1">UserID</th>
+                            <th class="font-weight-light c-font" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1">Phone</th>
+                            <th class="font-weight-light c-font" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1">BadgeNumber</th>
+                            <th class="font-weight-light c-font" tabindex="0" aria-controls="datatable" rowspan="1" colspan="1">User Type</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                                                      <tr>
+                              <td>
+                                <p class="text-muted "> 1</p>
+                              </td>
+                              <td>
+                                <a href="update.php?edit=1" class="btn btn-outline-primary ">Edit</a>
+                              </td>
+                              <td>
+                                <a href="./function.php?delete_customer=1" class="btn  btn-danger">Delete</a>
+                              </td>
+
+                              <td>
+                                <img class="user-profile " src="../profile/" alt="">
+                              </td>
+
+                              <td>
+                                <p class="text-muted">Bereket Kassahun</p>
+                              </td>
+                              <td>
+                                <p class="text-muted">
+                                  <a class="badge badge-light" href="#" data-toggle="modal" data-target="#profile" data-userid="1">Update Profile</a>
+                                </p>
+                              </td>
+                              <td>
+                                <p class="text-muted">I.P-1</p>
+                              </td>
+                              <td>
+                                <p class="text-muted">098765432</p>
+                              </td>
+                              <td>
+                                <p class="text-muted ">1</p>
+                              </td>
+                              <td>
+                                <p class="text-muted ">office</p>
+                              </td>
+                            </tr>
+                                                      <tr>
+                              <td>
+                                <p class="text-muted "> 2</p>
+                              </td>
+                              <td>
+                                <a href="update.php?edit=2" class="btn btn-outline-primary ">Edit</a>
+                              </td>
+                              <td>
+                                <a href="./function.php?delete_customer=2" class="btn  btn-danger">Delete</a>
+                              </td>
+
+                              <td>
+                                <img class="user-profile " src="../profile/" alt="">
+                              </td>
+
+                              <td>
+                                <p class="text-muted">Fasil Ayele</p>
+                              </td>
+                              <td>
+                                <p class="text-muted">
+                                  <a class="badge badge-light" href="#" data-toggle="modal" data-target="#profile" data-userid="2">Update Profile</a>
+                                </p>
+                              </td>
+                              <td>
+                                <p class="text-muted">I.P-2</p>
+                              </td>
+                              <td>
+                                <p class="text-muted">098787898787</p>
+                              </td>
+                              <td>
+                                <p class="text-muted ">103</p>
+                              </td>
+                              <td>
+                                <p class="text-muted ">office</p>
+                              </td>
+                            </tr>
+                                                      <tr>
+                              <td>
+                                <p class="text-muted "> 3</p>
+                              </td>
+                              <td>
+                                <a href="update.php?edit=3" class="btn btn-outline-primary ">Edit</a>
+                              </td>
+                              <td>
+                                <a href="./function.php?delete_customer=3" class="btn  btn-danger">Delete</a>
+                              </td>
+
+                              <td>
+                                <img class="user-profile " src="../profile/" alt="">
+                              </td>
+
+                              <td>
+                                <p class="text-muted">Rahel Anbes</p>
+                              </td>
+                              <td>
+                                <p class="text-muted">
+                                  <a class="badge badge-light" href="#" data-toggle="modal" data-target="#profile" data-userid="3">Update Profile</a>
+                                </p>
+                              </td>
+                              <td>
+                                <p class="text-muted">I.P-3</p>
+                              </td>
+                              <td>
+                                <p class="text-muted">098765432</p>
+                              </td>
+                              <td>
+                                <p class="text-muted ">104</p>
+                              </td>
+                              <td>
+                                <p class="text-muted ">office</p>
+                              </td>
+                            </tr>
+                                                      <tr>
+                              <td>
+                                <p class="text-muted "> 4</p>
+                              </td>
+                              <td>
+                                <a href="update.php?edit=4" class="btn btn-outline-primary ">Edit</a>
+                              </td>
+                              <td>
+                                <a href="./function.php?delete_customer=4" class="btn  btn-danger">Delete</a>
+                              </td>
+
+                              <td>
+                                <img class="user-profile " src="../profile/" alt="">
+                              </td>
+
+                              <td>
+                                <p class="text-muted">Ephrem Tesfaye</p>
+                              </td>
+                              <td>
+                                <p class="text-muted">
+                                  <a class="badge badge-light" href="#" data-toggle="modal" data-target="#profile" data-userid="4">Update Profile</a>
+                                </p>
+                              </td>
+                              <td>
+                                <p class="text-muted">I.P-4</p>
+                              </td>
+                              <td>
+                                <p class="text-muted"></p>
+                              </td>
+                              <td>
+                                <p class="text-muted ">105</p>
+                              </td>
+                              <td>
+                                <p class="text-muted ">office</p>
+                              </td>
+                            </tr>
+                                                      <tr>
+                              <td>
+                                <p class="text-muted "> 5</p>
+                              </td>
+                              <td>
+                                <a href="update.php?edit=5" class="btn btn-outline-primary ">Edit</a>
+                              </td>
+                              <td>
+                                <a href="./function.php?delete_customer=5" class="btn  btn-danger">Delete</a>
+                              </td>
+
+                              <td>
+                                <img class="user-profile " src="../profile/" alt="">
+                              </td>
+
+                              <td>
+                                <p class="text-muted">Setu Getachew</p>
+                              </td>
+                              <td>
+                                <p class="text-muted">
+                                  <a class="badge badge-light" href="#" data-toggle="modal" data-target="#profile" data-userid="5">Update Profile</a>
+                                </p>
+                              </td>
+                              <td>
+                                <p class="text-muted">I.P-5</p>
+                              </td>
+                              <td>
+                                <p class="text-muted"></p>
+                              </td>
+                              <td>
+                                <p class="text-muted ">110</p>
+                              </td>
+                              <td>
+                                <p class="text-muted ">office</p>
+                              </td>
+                            </tr>
+                                                      <tr>
+                              <td>
+                                <p class="text-muted "> 6</p>
+                              </td>
+                              <td>
+                                <a href="update.php?edit=6" class="btn btn-outline-primary ">Edit</a>
+                              </td>
+                              <td>
+                                <a href="./function.php?delete_customer=6" class="btn  btn-danger">Delete</a>
+                              </td>
+
+                              <td>
+                                <img class="user-profile " src="../profile/" alt="">
+                              </td>
+
+                              <td>
+                                <p class="text-muted">Bertukan Ayu</p>
+                              </td>
+                              <td>
+                                <p class="text-muted">
+                                  <a class="badge badge-light" href="#" data-toggle="modal" data-target="#profile" data-userid="6">Update Profile</a>
+                                </p>
+                              </td>
+                              <td>
+                                <p class="text-muted">I.P-6</p>
+                              </td>
+                              <td>
+                                <p class="text-muted"></p>
+                              </td>
+                              <td>
+                                <p class="text-muted ">106</p>
+                              </td>
+                              <td>
+                                <p class="text-muted ">office</p>
+                              </td>
+                            </tr>
+                                                      <tr>
+                              <td>
+                                <p class="text-muted "> 7</p>
+                              </td>
+                              <td>
+                                <a href="update.php?edit=7" class="btn btn-outline-primary ">Edit</a>
+                              </td>
+                              <td>
+                                <a href="./function.php?delete_customer=7" class="btn  btn-danger">Delete</a>
+                              </td>
+
+                              <td>
+                                <img class="user-profile " src="../profile/" alt="">
+                              </td>
+
+                              <td>
+                                <p class="text-muted">Teyoflos Abel</p>
+                              </td>
+                              <td>
+                                <p class="text-muted">
+                                  <a class="badge badge-light" href="#" data-toggle="modal" data-target="#profile" data-userid="7">Update Profile</a>
+                                </p>
+                              </td>
+                              <td>
+                                <p class="text-muted">I.P-7</p>
+                              </td>
+                              <td>
+                                <p class="text-muted"></p>
+                              </td>
+                              <td>
+                                <p class="text-muted ">107</p>
+                              </td>
+                              <td>
+                                <p class="text-muted ">office</p>
+                              </td>
+                            </tr>
+                                                      <tr>
+                              <td>
+                                <p class="text-muted "> 8</p>
+                              </td>
+                              <td>
+                                <a href="update.php?edit=8" class="btn btn-outline-primary ">Edit</a>
+                              </td>
+                              <td>
+                                <a href="./function.php?delete_customer=8" class="btn  btn-danger">Delete</a>
+                              </td>
+
+                              <td>
+                                <img class="user-profile " src="../profile/" alt="">
+                              </td>
+
+                              <td>
+                                <p class="text-muted">Andenet Tesfaye</p>
+                              </td>
+                              <td>
+                                <p class="text-muted">
+                                  <a class="badge badge-light" href="#" data-toggle="modal" data-target="#profile" data-userid="8">Update Profile</a>
+                                </p>
+                              </td>
+                              <td>
+                                <p class="text-muted">I.P-8</p>
+                              </td>
+                              <td>
+                                <p class="text-muted"></p>
+                              </td>
+                              <td>
+                                <p class="text-muted ">108</p>
+                              </td>
+                              <td>
+                                <p class="text-muted ">office</p>
+                              </td>
+                            </tr>
+                                                      <tr>
+                              <td>
+                                <p class="text-muted "> 9</p>
+                              </td>
+                              <td>
+                                <a href="update.php?edit=9" class="btn btn-outline-primary ">Edit</a>
+                              </td>
+                              <td>
+                                <a href="./function.php?delete_customer=9" class="btn  btn-danger">Delete</a>
+                              </td>
+
+                              <td>
+                                <img class="user-profile " src="../profile/" alt="">
+                              </td>
+
+                              <td>
+                                <p class="text-muted">Ephrem Tesfaye</p>
+                              </td>
+                              <td>
+                                <p class="text-muted">
+                                  <a class="badge badge-light" href="#" data-toggle="modal" data-target="#profile" data-userid="9">Update Profile</a>
+                                </p>
+                              </td>
+                              <td>
+                                <p class="text-muted">I.P-9</p>
+                              </td>
+                              <td>
+                                <p class="text-muted"></p>
+                              </td>
+                              <td>
+                                <p class="text-muted ">111</p>
+                              </td>
+                              <td>
+                                <p class="text-muted ">office</p>
+                              </td>
+                            </tr>
+                                                      <tr>
+                              <td>
+                                <p class="text-muted "> 10</p>
+                              </td>
+                              <td>
+                                <a href="update.php?edit=10" class="btn btn-outline-primary ">Edit</a>
+                              </td>
+                              <td>
+                                <a href="./function.php?delete_customer=10" class="btn  btn-danger">Delete</a>
+                              </td>
+
+                              <td>
+                                <img class="user-profile " src="../profile/" alt="">
+                              </td>
+
+                              <td>
+                                <p class="text-muted">113</p>
+                              </td>
+                              <td>
+                                <p class="text-muted">
+                                  <a class="badge badge-light" href="#" data-toggle="modal" data-target="#profile" data-userid="10">Update Profile</a>
+                                </p>
+                              </td>
+                              <td>
+                                <p class="text-muted">I.P-10</p>
+                              </td>
+                              <td>
+                                <p class="text-muted"></p>
+                              </td>
+                              <td>
+                                <p class="text-muted ">113</p>
+                              </td>
+                              <td>
+                                <p class="text-muted ">office</p>
+                              </td>
+                            </tr>
+                                                      <tr>
+                              <td>
+                                <p class="text-muted "> 11</p>
+                              </td>
+                              <td>
+                                <a href="update.php?edit=11" class="btn btn-outline-primary ">Edit</a>
+                              </td>
+                              <td>
+                                <a href="./function.php?delete_customer=11" class="btn  btn-danger">Delete</a>
+                              </td>
+
+                              <td>
+                                <img class="user-profile " src="../profile/" alt="">
+                              </td>
+
+                              <td>
+                                <p class="text-muted">Temuskey</p>
+                              </td>
+                              <td>
+                                <p class="text-muted">
+                                  <a class="badge badge-light" href="#" data-toggle="modal" data-target="#profile" data-userid="11">Update Profile</a>
+                                </p>
+                              </td>
+                              <td>
+                                <p class="text-muted">I.P-11</p>
+                              </td>
+                              <td>
+                                <p class="text-muted"></p>
+                              </td>
+                              <td>
+                                <p class="text-muted ">114</p>
+                              </td>
+                              <td>
+                                <p class="text-muted ">office</p>
+                              </td>
+                            </tr>
+                                                      <tr>
+                              <td>
+                                <p class="text-muted "> 12</p>
+                              </td>
+                              <td>
+                                <a href="update.php?edit=12" class="btn btn-outline-primary ">Edit</a>
+                              </td>
+                              <td>
+                                <a href="./function.php?delete_customer=12" class="btn  btn-danger">Delete</a>
+                              </td>
+
+                              <td>
+                                <img class="user-profile " src="../profile/" alt="">
+                              </td>
+
+                              <td>
+                                <p class="text-muted">101</p>
+                              </td>
+                              <td>
+                                <p class="text-muted">
+                                  <a class="badge badge-light" href="#" data-toggle="modal" data-target="#profile" data-userid="12">Update Profile</a>
+                                </p>
+                              </td>
+                              <td>
+                                <p class="text-muted">I.P-12</p>
+                              </td>
+                              <td>
+                                <p class="text-muted"></p>
+                              </td>
+                              <td>
+                                <p class="text-muted ">101</p>
+                              </td>
+                              <td>
+                                <p class="text-muted ">office</p>
+                              </td>
+                            </tr>
+                                                      <tr>
+                              <td>
+                                <p class="text-muted "> 13</p>
+                              </td>
+                              <td>
+                                <a href="update.php?edit=13" class="btn btn-outline-primary ">Edit</a>
+                              </td>
+                              <td>
+                                <a href="./function.php?delete_customer=13" class="btn  btn-danger">Delete</a>
+                              </td>
+
+                              <td>
+                                <img class="user-profile " src="../profile/" alt="">
+                              </td>
+
+                              <td>
+                                <p class="text-muted">100</p>
+                              </td>
+                              <td>
+                                <p class="text-muted">
+                                  <a class="badge badge-light" href="#" data-toggle="modal" data-target="#profile" data-userid="13">Update Profile</a>
+                                </p>
+                              </td>
+                              <td>
+                                <p class="text-muted">I.P-13</p>
+                              </td>
+                              <td>
+                                <p class="text-muted"></p>
+                              </td>
+                              <td>
+                                <p class="text-muted ">100</p>
+                              </td>
+                              <td>
+                                <p class="text-muted ">office</p>
+                              </td>
+                            </tr>
+                                                      <tr>
+                              <td>
+                                <p class="text-muted "> 14</p>
+                              </td>
+                              <td>
+                                <a href="update.php?edit=14" class="btn btn-outline-primary ">Edit</a>
+                              </td>
+                              <td>
+                                <a href="./function.php?delete_customer=14" class="btn  btn-danger">Delete</a>
+                              </td>
+
+                              <td>
+                                <img class="user-profile " src="../profile/" alt="">
+                              </td>
+
+                              <td>
+                                <p class="text-muted">102</p>
+                              </td>
+                              <td>
+                                <p class="text-muted">
+                                  <a class="badge badge-light" href="#" data-toggle="modal" data-target="#profile" data-userid="14">Update Profile</a>
+                                </p>
+                              </td>
+                              <td>
+                                <p class="text-muted">I.P-14</p>
+                              </td>
+                              <td>
+                                <p class="text-muted"></p>
+                              </td>
+                              <td>
+                                <p class="text-muted ">102</p>
+                              </td>
+                              <td>
+                                <p class="text-muted ">office</p>
+                              </td>
+                            </tr>
+                                                      <tr>
+                              <td>
+                                <p class="text-muted "> 15</p>
+                              </td>
+                              <td>
+                                <a href="update.php?edit=15" class="btn btn-outline-primary ">Edit</a>
+                              </td>
+                              <td>
+                                <a href="./function.php?delete_customer=15" class="btn  btn-danger">Delete</a>
+                              </td>
+
+                              <td>
+                                <img class="user-profile " src="../profile/" alt="">
+                              </td>
+
+                              <td>
+                                <p class="text-muted">3</p>
+                              </td>
+                              <td>
+                                <p class="text-muted">
+                                  <a class="badge badge-light" href="#" data-toggle="modal" data-target="#profile" data-userid="15">Update Profile</a>
+                                </p>
+                              </td>
+                              <td>
+                                <p class="text-muted">I.P-15</p>
+                              </td>
+                              <td>
+                                <p class="text-muted"></p>
+                              </td>
+                              <td>
+                                <p class="text-muted ">3</p>
+                              </td>
+                              <td>
+                                <p class="text-muted ">office</p>
+                              </td>
+                            </tr>
+                                                      <tr>
+                              <td>
+                                <p class="text-muted "> 16</p>
+                              </td>
+                              <td>
+                                <a href="update.php?edit=16" class="btn btn-outline-primary ">Edit</a>
+                              </td>
+                              <td>
+                                <a href="./function.php?delete_customer=16" class="btn  btn-danger">Delete</a>
+                              </td>
+
+                              <td>
+                                <img class="user-profile " src="../profile/" alt="">
+                              </td>
+
+                              <td>
+                                <p class="text-muted">109</p>
+                              </td>
+                              <td>
+                                <p class="text-muted">
+                                  <a class="badge badge-light" href="#" data-toggle="modal" data-target="#profile" data-userid="16">Update Profile</a>
+                                </p>
+                              </td>
+                              <td>
+                                <p class="text-muted">I.P-16</p>
+                              </td>
+                              <td>
+                                <p class="text-muted"></p>
+                              </td>
+                              <td>
+                                <p class="text-muted ">109</p>
+                              </td>
+                              <td>
+                                <p class="text-muted ">office</p>
+                              </td>
+                            </tr>
+                                                  </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+
+
+
+
+
+            <div class="modal fade" id="profile" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="myModalLabel">User Profile</h5>
+
+                    <button type="button" class="close btn " data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                          <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
+                        </svg>
+                      </span>
+                    </button>
+
+                  </div>
+                  <div class="modal-body">
+                    <form action="./function.php" method="POST" enctype="multipart/form-data" autocomplete="">
+                      <br>
+                      <img id="image-preview" src="#" alt="">
+                      <br>
+                      <input type="hidden" name="user_id" id="user-id-input">
+                      <input class="btn btn-primary image-preview" name="file" type="file" id="image-input" accept="image/*" onchange="previewImage(event)" required>
+                      <br>
+
+                      <div class="modal-footer">
+                        <button name="profile" type="submit" class="btn btn-primary">Save changes</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <style>
+              #image-preview {
+                max-width: 145px;
+                /* max-height: 105px; */
+                border-radius: 50%;
+                margin: auto;
+                height: 145px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border: 3px solid #e1e1e1;
+              }
+
+              .image-preview {
+                margin: auto;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+              }
+            </style>
+
+            <script>
+              $('#profile').on('show.bs.modal', function(event) {
+                var button = $(event.relatedTarget);
+                var userId = button.data('userid');
+                var modal = $(this);
+
+                modal.find('#user-id-input').val(userId);
+                modal.find('#user-id').text(userId);
+              });
+
+              function previewImage(event) {
+                var input = event.target;
+                var imagePreview = document.getElementById('image-preview');
+
+                if (input.files && input.files[0]) {
+                  var reader = new FileReader();
+                  reader.onload = function(e) {
+                    imagePreview.src = e.target.result;
+                  };
+                  reader.readAsDataURL(input.files[0]);
+                }
+              }
+            </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <script>
+              //datatable
+              $(document).ready(function() {
+                $('#datatable').DataTable();
+              });
+            </script>
+            <script src="../assets/js/jquery-3.5.1.js"></script>
+            <script src="../assets/js/jquery.dataTables.min.js"></script>
+            <script src="../assets/js/dataTables.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <div class="col-lg-4 col-md-12">
+
+              <div class="card-body form-upload_wrapper">
+                <div class="d-flex justify-content-start">
+                  <button class="btn btn-outline-primary active mr-2" data-tab="office">Manage User</button> &nbsp;
+                  <button class="btn btn-outline-primary" data-tab="workshop">Forget cin/cout</button> &nbsp;
+                  <button class="btn btn-outline-primary" data-tab="custom">Leave</button> &nbsp;
+                  <button class="btn btn-outline-primary" data-tab="holiday">Holiday</button> &nbsp;
+
+                </div>
+
+
+                <div class="tab-content" id="myTabContent">
+
+                  <div class="tab-pane fade show active" id="office" role="tabpanel" aria-labelledby="office-tab">
+
+                    <style>
+                      #Input {
+                        pointer-events: none;
+                        cursor: no-drop !important;
+                      }
+
+                      .profile_set {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        border-radius: 50%;
+                      }
+
+                      .user-profile {
+                        width: 40px;
+                        height: 40px;
+                        border-radius: 50%;
+                        object-fit: cover;
+                      }
+
+
+                      #updateBtn {
+                        color: #fff;
+                        cursor: pointer;
+                      }
+
+                      #updateBtn.success {
+                        background-color: #28a745;
+                      }
+                    </style>
+
+                    
+
+
+
+
+
+                    <p class="mt-2 form-detail text-primary">User Authorization.</p>
+
+                    <!--user update with profile-->
+                    <form action="./function.php" method="POST" enctype="multipart/form-data" autocomplete="">
+
+                      <input type="hidden" name="id" value="0">
+
+                      <div class="form-group">
+                        <small for="username">User name</small>
+                        <input class="form-control" id="Input" type="text" placeholder="Enter User Name" value="" required>
+                      </div>
+
+
+
+                      <div class="form-group">
+                        <small for="username">Phone</small>
+                        <input class="form-control" type="number" name="usr_phone" placeholder="Enter Phone Number" value="" required>
+                      </div>
+
+                      <div class="form-group">
+                        <small for="username">Email</small>
+                        <input class="form-control" type="email" name="usr_email" placeholder="Enter Email" value="" required>
+                      </div>
+
+                      <div class="form-group">
+                        <small for="username">Password</small>
+
+                        <div class="input-group">
+                          <input class="form-control passo" type="text" name="usr_pass" id="password-input" placeholder="Enter password" required>
+                          <div class="input-group-append">
+                            <button class="btn btn-primary ms-2 mt-1" id="generate-button" type="button">Generate</button>
+                          </div>
+                        </div>
+
+                      </div>
+
+
+                      <div class="form-group">
+                        <small for="password">User type</small>
+                        <select class="form-select" name="user_type" aria-label="Default select example">
+                          <option value="0">office</option>
+                          <option value="0">workshop</option>
+                          <option value="2">Manager</option>
+                        </select>
+                      </div>
+
+
+
+                      <div class="form-group">
+                        <button type="submit" name="update_customer" value="Signup" class="btn btn-primary mt-2">Update Data</button>
+                      </div>
+
+                      <script>
+                        function generatePassword() {
+                          var length = 8; // Length of the generated password
+                          var charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"; // Characters to include in the generated password
+                          var password = "";
+
+                          for (var i = 0; i < length; i++) {
+                            var randomIndex = Math.floor(Math.random() * charset.length);
+                            password += charset.charAt(randomIndex);
+                          }
+
+                          return password;
+                        }
+
+                        document.getElementById("generate-button").addEventListener("click", function() {
+                          var generatedPassword = generatePassword();
+                          document.getElementById("password-input").value = generatedPassword;
+                        });
+                      </script>
+
+
+
+
+
+                      <style>
+                        .form-container {
+                          display: none;
+                        }
+
+                        .expand-icon::after {
+                          content: "\25BC";
+                          /* Up arrow */
+                        }
+
+                        .collapse-icon::after {
+                          content: "\25B2";
+                          /* Down arrow */
+                        }
+
+                        .passo {
+                          width: 200px;
+
+
+                        }
+                      </style>
+
+
+
+                    </form>
+                  </div>
+
+
+
+
+
+
+
+
+                  <div class="tab-pane fade" id="workshop" role="tabpanel" aria-labelledby="workshop-tab">
+                    <p class="mt-2 form-detail text-primary">Forget to clock in/out User Data.</p>
+
+                    <form action="./function.php" method="POST" autocomplete="">
+                      <div class="form-group">
+                        <small>User name</small>
+                        <select class="form-select" name="user" id="agent"><option value="1">Bereket Kassahun</option><option value="2">Fasil Ayele</option><option value="3">Rahel Anbes</option><option value="4">Ephrem Tesfaye</option><option value="5">Setu Getachew</option><option value="6">Bertukan Ayu</option><option value="7">Teyoflos Abel</option><option value="8">Andenet Tesfaye</option><option value="9">Ephrem Tesfaye</option><option value="10">113</option><option value="11">Temuskey</option><option value="12">101</option><option value="13">100</option><option value="14">102</option><option value="15">3</option><option value="16">109</option></select>                      </div>
+                      <div class="form-group">
+                        <small for="password">Select State type</small>
+                        <select class="form-select" name="clock_type" aria-label="Default select example">
+                          <option value="I">Clock-in</option>
+                          <option value="O">Clock-out</option>
+                        </select>
+                      </div>
+
+                      <div class="form-group">
+
+                        <small for="datetime">Date and Time (YYYY-MM-DD HH:MM:SS):</small>
+                        <input class="form-control" type="text" id="my_datetime" name="my_datetime" placeholder="YYYY-MM-DD HH:MM:SS" pattern="\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}" required>
+
+
+                      </div>
+
+                      <div class="form-group">
+                        <button type="submit" name="forget" value="Signup" class="btn btn-primary mt-2">Submit</button>
+                      </div>
+                    </form>
+                  </div>
+
+
+
+
+
+
+
+
+
+
+                  <div class="tab-pane fade" id="custom" role="tabpanel" aria-labelledby="custom-tab">
+                    <p class="mt-2 form-detail text-primary">Leave Ticker </p>
+
+                    <form action="./function.php" class="form-inline" method="POST">
+                      <div class="form-group">
+                        <small>User name</small>
+                        <select class="form-select" name="user" id="agent"><option value="1">Bereket Kassahun</option><option value="2">Fasil Ayele</option><option value="3">Rahel Anbes</option><option value="4">Ephrem Tesfaye</option><option value="5">Setu Getachew</option><option value="6">Bertukan Ayu</option><option value="7">Teyoflos Abel</option><option value="8">Andenet Tesfaye</option><option value="9">Ephrem Tesfaye</option><option value="10">113</option><option value="11">Temuskey</option><option value="12">101</option><option value="13">100</option><option value="14">102</option><option value="15">3</option><option value="16">109</option></select>                      </div>
+                      <input type="hidden" name="user_type" value="">
+                      <div class="form-group">
+                        <small for="from_date">From Date</small>
+                        <input class="form-control" type="date" name="from_date" id="from_date">
+                      </div>
+                      <div class="form-group">
+                        <small for="to_date">To Date</small>
+                        <input class="form-control" type="date" name="to_date" id="to_date">
+                      </div>
+                      <div class="form-group">
+                        <button type="submit" name="leave" value="Signup" class="btn btn-primary mt-2">Submit</button>
+                      </div>
+
+                    </form>
+                  </div>
+
+
+                  <div class="tab-pane fade" id="holiday" role="tabpanel" aria-labelledby="custom-tab">
+                    <p class="mt-2 form-detail text-primary">Holiday Ticker </p>
+
+                    <form action="./function.php" class="form-inline" method="POST">
+
+                      <div class="form-group">
+                        <small for="to_date">Select Date</small>
+                        <input class="form-control" type="date" name="date" required>
+                      </div>
+
+                      <div class="form-group">
+                        <small for="to_date">Holiday name</small>
+                        <input class="form-control" type="text" name="name" required>
+                      </div>
+
+                      <div class="form-group">
+                        <button type="submit" name="h_ticker" value="Signup" class="btn btn-primary mt-2">Submit</button>
+                      </div>
+
+                    </form>
+                  </div>
+
+
+
+
+
+
+
+
+                </div>
+              </div>
+
+
+              <script>
+                const buttons = document.querySelectorAll('[data-tab]');
+                const tabContent = document.querySelectorAll('.tab-pane');
+
+                buttons.forEach((button) => {
+                  button.addEventListener('click', () => {
+                    const tabName = button.dataset.tab;
+                    buttons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    tabContent.forEach(tab => {
+                      if (tab.getAttribute('id') === tabName) {
+                        tab.classList.add('show', 'active');
+                      } else {
+                        tab.classList.remove('show', 'active');
+                      }
+                    });
+                  });
+                });
+              </script>
+            </div>
+          </div>
+        </div>
+        <style>
+          .btnsize {
+
+            padding: 0px 8px;
+
+          }
+        </style>
+
+      </section>
+
+      <!-- Copyright Start -->
+      
+
+  <!-- Copyright Start -->
+  <div class="container-fluid copyright bg-black footer">
+    <div class="container-fluid ">
+      <div class="row">
+        <div class="col-md-6 text-center text-md-start  mb-md-0 text-secondary">
+          &copy; <span class="fw-medium" href="#"> <small>Image Printing, All Right Reserved.</small> </span>
+        </div>
+        <div class="col-md-6 text-center text-md-end text-secondary">
+          <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+          <small>Developed By : 0rit Systems - 0932715312</small>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Copyright End -->
+
+
+      <!-- Bootstrap core JS-->
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+      <!-- Core theme JS-->
+      <script src="../js/scripts.js"></script>
+    </body>
+
+    </html>
